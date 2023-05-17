@@ -14,6 +14,7 @@
 		78FACE392A15622200E317AE /* Offseason2Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78FACE382A15622200E317AE /* Offseason2Tests.swift */; };
 		78FACE432A15622200E317AE /* Offseason2UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78FACE422A15622200E317AE /* Offseason2UITests.swift */; };
 		78FACE452A15622200E317AE /* Offseason2UITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78FACE442A15622200E317AE /* Offseason2UITestsLaunchTests.swift */; };
+		78FACE522A1563C500E317AE /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 78FACE512A1563C500E317AE /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +45,7 @@
 		78FACE3E2A15622200E317AE /* Offseason2UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Offseason2UITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		78FACE422A15622200E317AE /* Offseason2UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Offseason2UITests.swift; sourceTree = "<group>"; };
 		78FACE442A15622200E317AE /* Offseason2UITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Offseason2UITestsLaunchTests.swift; sourceTree = "<group>"; };
+		78FACE512A1563C500E317AE /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,6 +97,7 @@
 			isa = PBXGroup;
 			children = (
 				78FACE272A15622100E317AE /* Offseason2App.swift */,
+				78FACE512A1563C500E317AE /* GoogleService-Info.plist */,
 				78FACE292A15622100E317AE /* ContentView.swift */,
 				78FACE2B2A15622100E317AE /* Assets.xcassets */,
 				78FACE2D2A15622100E317AE /* Preview Content */,
@@ -233,6 +236,7 @@
 			files = (
 				78FACE2F2A15622100E317AE /* Preview Assets.xcassets in Resources */,
 				78FACE2C2A15622100E317AE /* Assets.xcassets in Resources */,
+				78FACE522A1563C500E317AE /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
