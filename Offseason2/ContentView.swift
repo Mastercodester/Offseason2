@@ -22,7 +22,7 @@ struct ContentView: View {
                  
                  
                  Group{
-                    Home_Page()
+                     Home_Page(event: Event())
                          .tabItem{
                              Label("Home",systemImage: "house.circle")
                             

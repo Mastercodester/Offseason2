@@ -14,7 +14,7 @@ import FirebaseStorage
 @MainActor
 class EventViewModel: ObservableObject {
     @Published var events = Event()
-    func saveSpot(event:Event) async -> Bool{
+    func saveEvent(event:Event) async -> Bool{
         let db = Firestore.firestore()
         if let id = event.id { // update the data that alrsady here
         do {

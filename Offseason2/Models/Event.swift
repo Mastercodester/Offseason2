@@ -13,7 +13,16 @@ import MapKit
 struct Event: Identifiable,Codable,Equatable {
     @DocumentID var id: String?
     var name = ""
+    var hostName = ""
+ var locationName = ""
     var address = ""
+    var category = ""
+    var summary = ""
+    var description = ""
+    var startDate = ""
+    var startTime = ""
+    var endTime = ""
+    var phoneNumber = ""
     var latitude = 0.0
     var longitude = 0.0
     // this refer to here whenever we need a coordinate to refer to  
@@ -22,6 +31,7 @@ struct Event: Identifiable,Codable,Equatable {
     }
 
     var dictionary:[String:Any]{
-        return ["name": name,"address":address,"latitude" : latitude,"longitude":longitude]
+        return ["name": name,"hostName" : hostName,"locationName":locationName,"address":address,"latitude" : latitude,"longitude":longitude,"category" :category,"description" : description,
+        ]
     }
 }

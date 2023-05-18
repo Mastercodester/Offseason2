@@ -19,6 +19,7 @@ class WeatherViewModel: ObservableObject {
     private let weatherService = WeatherService()
     private let currentLocation = CLLocation(latitude: 42.331429, longitude: -83.045753)
     
+   
     
     init() {
         fetchCurrentWeather()

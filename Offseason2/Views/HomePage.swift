@@ -12,6 +12,10 @@ import PhotosUI
 import WeatherKit
 
 struct Home_Page: View {
+    @State var event: Event
+
+     
+    
     // showing sheets
     @State var presentnotificationSheet = false
     @State var presentWeatherSheet = false
@@ -32,10 +36,14 @@ struct Home_Page: View {
         NavigationView{
             ZStack{
                 
-                Map(coordinateRegion: $mapRegion,showsUserLocation: true, annotationItems:annotations){
+                Map(coordinateRegion: $locationVm.region,showsUserLocation: true, annotationItems:annotations){
                     annotation in
                     MapMarker(coordinate: annotation.coordinate)
                 }.ignoresSafeArea()
+                    .onChange(of:event){ _ in
+                        annotations = [Annotation(name: event.name, address: event.address, coordinate: event.coordinate)]
+                        mapRegion.center = event.coordinate
+                    }
 //            Color.teal.ignoresSafeArea()
             VStack{
                 HStack {
@@ -105,8 +113,8 @@ struct Home_Page: View {
 
 struct Home_Page_Previews: PreviewProvider {
     static var previews: some View {
-        Home_Page()
-            .environmentObject(LocationManager())
+        Home_Page(event:Event())
+            .environmentObject(LocationManager())  
 
     }
 }

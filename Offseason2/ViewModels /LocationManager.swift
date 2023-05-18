@@ -16,6 +16,7 @@ import MapKit
 class LocationManager:NSObject,ObservableObject{
     @Published var location : CLLocation?
     @Published var region = MKCoordinateRegion()
+    let mapSpan = MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1)
 
     private let locationManager = CLLocationManager()
    
@@ -27,7 +28,7 @@ class LocationManager:NSObject,ObservableObject{
         locationManager.requestAlwaysAuthorization()
         locationManager.startUpdatingLocation()
         locationManager.delegate = self
-
+        self.region = MKCoordinateRegion(center:CLLocationCoordinate2D(latitude:  location?.coordinate.latitude ?? 0.00 , longitude:  location?.coordinate.longitude ?? 0.00 ), span: mapSpan)
 
     }
     

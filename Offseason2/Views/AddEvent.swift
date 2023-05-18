@@ -14,30 +14,56 @@ import MapKit
 import SwiftUI
 
 
-struct AddStore: View {
+struct AddEvent: View {
+    @State private var showPlaceLookupSheet = false
+
     @State var isPickerShowing = false
 
     @EnvironmentObject private var eventVm: EventViewModel
     @State var event: Event
+    @Environment(\.dismiss) private var dismiss
+
     var body: some View {   
-        NavigationView{
+        NavigationStack{
             VStack{
                 Form{
                 
                     Section(header: Text("Event Details")) {
                         TextField("Name",text:$event.name)
-                    
                         TextField("Address",text:$event.address)
+
+                        Button("Location"){
+                            showPlaceLookupSheet.toggle()
+                        }
                         
+                        TextField("Summary",text:$event.summary)
+                        TextField("Description",text:$event.description)
                        
-                        
-                    }
+                        Button("Ticket Details"){
+                            //TODO: ADD ANOTHER PAGE TO ADD HERE
+                        }
+                         
+                     }
                     
                     
                     
                     
                     
                 }
+            }.toolbar{
+                ToolbarItem(placement: .automatic) {
+                    saveButton
+                   
+                }
+                
+                ToolbarItem(placement: .cancellationAction) {
+                    Button("Back"){
+                        dismiss()
+                    }
+                }
+            }
+            .sheet(isPresented: $showPlaceLookupSheet) {
+                PlaceLookupView(event: $event)
             }
             
         }
@@ -46,10 +72,35 @@ struct AddStore: View {
     }
 }
 
-struct AddStore_Previews: PreviewProvider {
+struct AddEvent_Previews: PreviewProvider {
     static var previews: some View {
-        AddStore(event: Event())
+        AddEvent(event: Event())
         .environmentObject(EventViewModel())
         
     }
+}
+
+
+
+
+
+private extension AddEvent {
+    var saveButton: some View{
+        Button("Save"){
+            Task{
+                let success = await eventVm.saveEvent(event: event)
+                if success {
+                    dismiss()
+                } else {
+                    print("🤬 Error: Saving spot")
+                }
+            }
+            
+        }
+    }
+        // new code
+    
+    
+    
+    
 }
