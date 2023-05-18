@@ -9,6 +9,12 @@
 /* Begin PBXBuildFile section */
 		0967AC412A16630300800D73 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0967AC402A16630300800D73 /* LocationManager.swift */; };
 		0967AC432A166AEA00800D73 /* Annotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0967AC422A166AEA00800D73 /* Annotation.swift */; };
+		0967AC452A166DA300800D73 /* EventPlace.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0967AC442A166DA300800D73 /* EventPlace.swift */; };
+		0967AC472A166E2100800D73 /* EventPlaceViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0967AC462A166E2100800D73 /* EventPlaceViewModel.swift */; };
+		0967AC4F2A166F5100800D73 /* EventViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0967AC4B2A166F5100800D73 /* EventViewModel.swift */; };
+		0967AC532A16874100800D73 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0967AC522A16874100800D73 /* Event.swift */; };
+		0967AC572A168A9600800D73 /* CreateEventView .swift in Sources */ = {isa = PBXBuildFile; fileRef = 0967AC562A168A9600800D73 /* CreateEventView .swift */; };
+		0967AC592A168B2100800D73 /* AddEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0967AC582A168B2100800D73 /* AddEvent.swift */; };
 		78FACE282A15622100E317AE /* Offseason2App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78FACE272A15622100E317AE /* Offseason2App.swift */; };
 		78FACE2A2A15622100E317AE /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78FACE292A15622100E317AE /* ContentView.swift */; };
 		78FACE2C2A15622100E317AE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 78FACE2B2A15622100E317AE /* Assets.xcassets */; };
@@ -62,6 +68,12 @@
 /* Begin PBXFileReference section */
 		0967AC402A16630300800D73 /* LocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		0967AC422A166AEA00800D73 /* Annotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Annotation.swift; sourceTree = "<group>"; };
+		0967AC442A166DA300800D73 /* EventPlace.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventPlace.swift; sourceTree = "<group>"; };
+		0967AC462A166E2100800D73 /* EventPlaceViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventPlaceViewModel.swift; sourceTree = "<group>"; };
+		0967AC4B2A166F5100800D73 /* EventViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventViewModel.swift; sourceTree = "<group>"; };
+		0967AC522A16874100800D73 /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
+		0967AC562A168A9600800D73 /* CreateEventView .swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CreateEventView .swift"; sourceTree = "<group>"; };
+		0967AC582A168B2100800D73 /* AddEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddEvent.swift; sourceTree = "<group>"; };
 		78FACE242A15622100E317AE /* Offseason2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Offseason2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		78FACE272A15622100E317AE /* Offseason2App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Offseason2App.swift; sourceTree = "<group>"; };
 		78FACE292A15622100E317AE /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -128,6 +140,8 @@
 			isa = PBXGroup;
 			children = (
 				0967AC402A16630300800D73 /* LocationManager.swift */,
+				0967AC4B2A166F5100800D73 /* EventViewModel.swift */,
+				0967AC462A166E2100800D73 /* EventPlaceViewModel.swift */,
 			);
 			path = "ViewModels ";
 			sourceTree = "<group>";
@@ -197,8 +211,10 @@
 		78FACE6B2A1568D600E317AE /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				0967AC522A16874100800D73 /* Event.swift */,
 				78FACE6C2A1568F300E317AE /* WeatherViewModel.swift */,
 				0967AC422A166AEA00800D73 /* Annotation.swift */,
+				0967AC442A166DA300800D73 /* EventPlace.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -211,7 +227,9 @@
 				78FACE572A1565BD00E317AE /* Mygames.swift */,
 				78FACE652A15688C00E317AE /* filterspage2.swift */,
 				78FACE592A1565D200E317AE /* ProfilePage.swift */,
+				0967AC582A168B2100800D73 /* AddEvent.swift */,
 				78FACE612A15685200E317AE /* HelpPage.swift */,
+				0967AC562A168A9600800D73 /* CreateEventView .swift */,
 				78FACE632A15686F00E317AE /* filterspage.swift */,
 				78FACE532A15659700E317AE /* HomePage.swift */,
 				78FACE552A1565AA00E317AE /* ExplorePage.swift */,
@@ -383,16 +401,22 @@
 				78FACE602A15684300E317AE /* NotificationPage.swift in Sources */,
 				78FACE2A2A15622100E317AE /* ContentView.swift in Sources */,
 				78FACE662A15688C00E317AE /* filterspage2.swift in Sources */,
+				0967AC4F2A166F5100800D73 /* EventViewModel.swift in Sources */,
+				0967AC452A166DA300800D73 /* EventPlace.swift in Sources */,
+				0967AC572A168A9600800D73 /* CreateEventView .swift in Sources */,
 				78FACE622A15685200E317AE /* HelpPage.swift in Sources */,
 				78FACE5C2A15681E00E317AE /* GamePage.swift in Sources */,
 				78FACE582A1565BD00E317AE /* Mygames.swift in Sources */,
 				78FACE6D2A1568F300E317AE /* WeatherViewModel.swift in Sources */,
 				78FACE542A15659700E317AE /* HomePage.swift in Sources */,
 				78FACE282A15622100E317AE /* Offseason2App.swift in Sources */,
+				0967AC472A166E2100800D73 /* EventPlaceViewModel.swift in Sources */,
 				78FACE642A15686F00E317AE /* filterspage.swift in Sources */,
 				78FACE6A2A1568C200E317AE /* CreateGameForm.swift in Sources */,
+				0967AC532A16874100800D73 /* Event.swift in Sources */,
 				0967AC432A166AEA00800D73 /* Annotation.swift in Sources */,
 				78FACE742A156FB100E317AE /* CreateUserPage.swift in Sources */,
+				0967AC592A168B2100800D73 /* AddEvent.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
