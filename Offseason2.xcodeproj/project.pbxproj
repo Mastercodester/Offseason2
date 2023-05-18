@@ -16,6 +16,7 @@
 		0967AC572A168A9600800D73 /* CreateEventView .swift in Sources */ = {isa = PBXBuildFile; fileRef = 0967AC562A168A9600800D73 /* CreateEventView .swift */; };
 		0967AC592A168B2100800D73 /* AddEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0967AC582A168B2100800D73 /* AddEvent.swift */; };
 		098BF25C2A169BF500280650 /* PlaceLookupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 098BF25B2A169BF500280650 /* PlaceLookupView.swift */; };
+		098BF25E2A16E0A200280650 /* TestDataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 098BF25D2A16E0A200280650 /* TestDataView.swift */; };
 		78FACE282A15622100E317AE /* Offseason2App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78FACE272A15622100E317AE /* Offseason2App.swift */; };
 		78FACE2A2A15622100E317AE /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78FACE292A15622100E317AE /* ContentView.swift */; };
 		78FACE2C2A15622100E317AE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 78FACE2B2A15622100E317AE /* Assets.xcassets */; };
@@ -76,6 +77,7 @@
 		0967AC562A168A9600800D73 /* CreateEventView .swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CreateEventView .swift"; sourceTree = "<group>"; };
 		0967AC582A168B2100800D73 /* AddEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddEvent.swift; sourceTree = "<group>"; };
 		098BF25B2A169BF500280650 /* PlaceLookupView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaceLookupView.swift; sourceTree = "<group>"; };
+		098BF25D2A16E0A200280650 /* TestDataView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestDataView.swift; sourceTree = "<group>"; };
 		78FACE242A15622100E317AE /* Offseason2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Offseason2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		78FACE272A15622100E317AE /* Offseason2App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Offseason2App.swift; sourceTree = "<group>"; };
 		78FACE292A15622100E317AE /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -151,6 +153,7 @@
 		78FACE1B2A15622000E317AE = {
 			isa = PBXGroup;
 			children = (
+				098BF25D2A16E0A200280650 /* TestDataView.swift */,
 				78FACE262A15622100E317AE /* Offseason2 */,
 				78FACE372A15622200E317AE /* Offseason2Tests */,
 				78FACE412A15622200E317AE /* Offseason2UITests */,
@@ -400,6 +403,7 @@
 				0967AC412A16630300800D73 /* LocationManager.swift in Sources */,
 				78FACE5A2A1565D200E317AE /* ProfilePage.swift in Sources */,
 				78FACE5E2A15683000E317AE /* WeatherPage.swift in Sources */,
+				098BF25E2A16E0A200280650 /* TestDataView.swift in Sources */,
 				78FACE562A1565AA00E317AE /* ExplorePage.swift in Sources */,
 				78FACE602A15684300E317AE /* NotificationPage.swift in Sources */,
 				78FACE2A2A15622100E317AE /* ContentView.swift in Sources */,

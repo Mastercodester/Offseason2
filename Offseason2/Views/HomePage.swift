@@ -13,6 +13,7 @@ import WeatherKit
 
 struct Home_Page: View {
     @State var event: Event
+    @FirestoreQuery(collectionPath:"events") var events: [Event]
 
      
     
@@ -26,6 +27,8 @@ struct Home_Page: View {
     //for Map
     @State private var annotations: [Annotation] = []
     @State private var mapRegion = MKCoordinateRegion()
+    let regionSize = 500.0
+
 
     
     @StateObject private var weatherViewModel = WeatherViewModel()
@@ -36,14 +39,18 @@ struct Home_Page: View {
         NavigationView{
             ZStack{
                 
-                Map(coordinateRegion: $locationVm.region,showsUserLocation: true, annotationItems:annotations){
-                    annotation in
-                    MapMarker(coordinate: annotation.coordinate)
-                }.ignoresSafeArea()
-                    .onChange(of:event){ _ in
-                        annotations = [Annotation(name: event.name, address: event.address, coordinate: event.coordinate)]
-                        mapRegion.center = event.coordinate
-                    }
+                
+                List(events){ event in
+                    Text(event.name)
+                }
+//                Map(coordinateRegion: $locationVm.region,showsUserLocation: true, annotationItems:events){
+//                    annotation in
+//                    MapMarker(coordinate: annotation.coordinate)
+//                }.ignoresSafeArea()
+//                    .onChange(of:event){ _ in
+//                        annotations = [Annotation(name: event.name, address: event.address, coordinate: event.coordinate)]
+//                        mapRegion.center = event.coordinate
+                   // }
 //            Color.teal.ignoresSafeArea()
             VStack{
                 HStack {
@@ -84,7 +91,20 @@ struct Home_Page: View {
                
             }
           
-        }
+            }.onAppear{
+                
+                
+                
+                
+                if event.id != nil { // if we have a spot center it on the map
+                    mapRegion = MKCoordinateRegion(center: event.coordinate, latitudinalMeters: regionSize, longitudinalMeters: regionSize)
+                } else {// otherwise  center the map on the devices location
+                    Task {
+                        // make map region shows user lo
+                        mapRegion = MKCoordinateRegion(center: locationVm.location?.coordinate  ?? CLLocationCoordinate2D(), latitudinalMeters: regionSize, longitudinalMeters: regionSize)
+                    }
+                }
+            }
             
         } .sheet(isPresented: self.$presentCreateSheet){
            CreateGameForm()
