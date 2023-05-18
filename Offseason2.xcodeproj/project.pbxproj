@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0967AC412A16630300800D73 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0967AC402A16630300800D73 /* LocationManager.swift */; };
+		0967AC432A166AEA00800D73 /* Annotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0967AC422A166AEA00800D73 /* Annotation.swift */; };
 		78FACE282A15622100E317AE /* Offseason2App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78FACE272A15622100E317AE /* Offseason2App.swift */; };
 		78FACE2A2A15622100E317AE /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78FACE292A15622100E317AE /* ContentView.swift */; };
 		78FACE2C2A15622100E317AE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 78FACE2B2A15622100E317AE /* Assets.xcassets */; };
@@ -60,6 +61,7 @@
 
 /* Begin PBXFileReference section */
 		0967AC402A16630300800D73 /* LocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
+		0967AC422A166AEA00800D73 /* Annotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Annotation.swift; sourceTree = "<group>"; };
 		78FACE242A15622100E317AE /* Offseason2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Offseason2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		78FACE272A15622100E317AE /* Offseason2App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Offseason2App.swift; sourceTree = "<group>"; };
 		78FACE292A15622100E317AE /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -196,6 +198,7 @@
 			isa = PBXGroup;
 			children = (
 				78FACE6C2A1568F300E317AE /* WeatherViewModel.swift */,
+				0967AC422A166AEA00800D73 /* Annotation.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -388,6 +391,7 @@
 				78FACE282A15622100E317AE /* Offseason2App.swift in Sources */,
 				78FACE642A15686F00E317AE /* filterspage.swift in Sources */,
 				78FACE6A2A1568C200E317AE /* CreateGameForm.swift in Sources */,
+				0967AC432A166AEA00800D73 /* Annotation.swift in Sources */,
 				78FACE742A156FB100E317AE /* CreateUserPage.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

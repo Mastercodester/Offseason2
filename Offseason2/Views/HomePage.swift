@@ -6,15 +6,23 @@
 //
 
 import SwiftUI
+import MapKit
+import FirebaseFirestoreSwift
+import PhotosUI
 import WeatherKit
 
 struct Home_Page: View {
-    
+    // showing sheets
     @State var presentnotificationSheet = false
     @State var presentWeatherSheet = false
     @State var presentHelpSheet = false
     @State var presentfilterSheet = false
     @State var presentCreateSheet = false
+    
+    //for Map
+    @State private var annotations: [Annotation] = []
+    @State private var mapRegion = MKCoordinateRegion()
+
     
     @StateObject private var weatherViewModel = WeatherViewModel()
     
@@ -23,7 +31,12 @@ struct Home_Page: View {
     var body: some View {
         NavigationView{
             ZStack{
-            Color.teal.ignoresSafeArea()
+                
+                Map(coordinateRegion: $mapRegion,showsUserLocation: true, annotationItems:annotations){
+                    annotation in
+                    MapMarker(coordinate: annotation.coordinate)
+                }.ignoresSafeArea()
+//            Color.teal.ignoresSafeArea()
             VStack{
                 HStack {
                    NotificationButton
