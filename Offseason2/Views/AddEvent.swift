@@ -29,16 +29,20 @@ struct AddEvent: View {
                 Form{
                 
                     Section(header: Text("Event Details")) {
-                        TextField("Name",text:$event.name)
-                        TextField("Address",text:$event.address)
-
-                        Button("Location"){
-                            showPlaceLookupSheet.toggle()
-                        }
-                        
+                        TextField("Event Name",text:$event.name)
                         TextField("Summary",text:$event.summary)
                         TextField("Description",text:$event.description)
                        
+                        Button("Location"){
+                            showPlaceLookupSheet.toggle()
+                        }
+                        TextField("Location Name",text:$event.locationName)
+
+                        TextField("Address",text:$event.address)
+
+                        
+                        
+                        
                         Button("Ticket Details"){
                             //TODO: ADD ANOTHER PAGE TO ADD HERE
                         }
