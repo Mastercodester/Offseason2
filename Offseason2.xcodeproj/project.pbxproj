@@ -147,8 +147,6 @@
 				78FACE272A15622100E317AE /* Offseason2App.swift */,
 				78FACE292A15622100E317AE /* ContentView.swift */,
 				78FACE732A156FB100E317AE /* CreateUserPage.swift */,
-				78FACE592A1565D200E317AE /* ProfilePage.swift */,
-				78FACE572A1565BD00E317AE /* Mygames.swift */,
 				78FACE6F2A156E6E00E317AE /* Views */,
 				78FACE6B2A1568D600E317AE /* Models */,
 				78FACE2B2A15622100E317AE /* Assets.xcassets */,
@@ -196,7 +194,9 @@
 			children = (
 				78FACE5B2A15681E00E317AE /* GamePage.swift */,
 				78FACE5F2A15684300E317AE /* NotificationPage.swift */,
+				78FACE572A1565BD00E317AE /* Mygames.swift */,
 				78FACE652A15688C00E317AE /* filterspage2.swift */,
+				78FACE592A1565D200E317AE /* ProfilePage.swift */,
 				78FACE612A15685200E317AE /* HelpPage.swift */,
 				78FACE632A15686F00E317AE /* filterspage.swift */,
 				78FACE532A15659700E317AE /* HomePage.swift */,

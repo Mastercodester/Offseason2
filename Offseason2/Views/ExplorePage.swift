@@ -10,11 +10,11 @@ import SwiftUI
 struct ExplorePage: View {
     var body: some View {
         NavigationView
-        {
+        { ZStack{
             List {
                 Section(header: Text("Categories")){
                     
-                   filterspage23()
+                    filterspage23()
                     
                 }
                 
@@ -43,22 +43,22 @@ struct ExplorePage: View {
                 .padding()
                 
             }.headerProminence(.increased)
-               
-               
-       
-            .navigationTitle("Explore")
+            
+            
+            
+                .navigationTitle("Explore")
             
         }
-           
-               
-               
-             
-                    
-                }
+            
+            
+            
+            
+            
         }
+    }
     
     
-
+}
 
 struct ExplorePage_Previews: PreviewProvider {
     static var previews: some View {
