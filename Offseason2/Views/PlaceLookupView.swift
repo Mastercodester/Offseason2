@@ -25,9 +25,9 @@ struct PlaceLookupView: View {
             // shows us the kist of similar things we seaarched up
             List(placeVM.places){ place in
                 VStack(alignment: .leading){
-                    Text(event.name)
+                    Text(place.name)
                         .font(.title2)
-                    Text(event.address)
+                    Text(place.address)
                         .font(.callout)
                 }.onTapGesture {
                     // allows you to click on the list and upddate the data
