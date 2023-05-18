@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0967AC412A16630300800D73 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0967AC402A16630300800D73 /* LocationManager.swift */; };
 		78FACE282A15622100E317AE /* Offseason2App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78FACE272A15622100E317AE /* Offseason2App.swift */; };
 		78FACE2A2A15622100E317AE /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78FACE292A15622100E317AE /* ContentView.swift */; };
 		78FACE2C2A15622100E317AE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 78FACE2B2A15622100E317AE /* Assets.xcassets */; };
@@ -58,6 +59,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0967AC402A16630300800D73 /* LocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		78FACE242A15622100E317AE /* Offseason2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Offseason2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		78FACE272A15622100E317AE /* Offseason2App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Offseason2App.swift; sourceTree = "<group>"; };
 		78FACE292A15622100E317AE /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -120,6 +122,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0967AC3F2A1662C600800D73 /* ViewModels  */ = {
+			isa = PBXGroup;
+			children = (
+				0967AC402A16630300800D73 /* LocationManager.swift */,
+			);
+			path = "ViewModels ";
+			sourceTree = "<group>";
+		};
 		78FACE1B2A15622000E317AE = {
 			isa = PBXGroup;
 			children = (
@@ -148,6 +158,7 @@
 				78FACE292A15622100E317AE /* ContentView.swift */,
 				78FACE732A156FB100E317AE /* CreateUserPage.swift */,
 				78FACE6F2A156E6E00E317AE /* Views */,
+				0967AC3F2A1662C600800D73 /* ViewModels  */,
 				78FACE6B2A1568D600E317AE /* Models */,
 				78FACE2B2A15622100E317AE /* Assets.xcassets */,
 				78FACE702A156E8800E317AE /* Utils */,
@@ -362,6 +373,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				78FACE682A1568B500E317AE /* ImagePicker.swift in Sources */,
+				0967AC412A16630300800D73 /* LocationManager.swift in Sources */,
 				78FACE5A2A1565D200E317AE /* ProfilePage.swift in Sources */,
 				78FACE5E2A15683000E317AE /* WeatherPage.swift in Sources */,
 				78FACE562A1565AA00E317AE /* ExplorePage.swift in Sources */,
@@ -539,6 +551,8 @@
 				DEVELOPMENT_TEAM = 73U243ADJK;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "This app requires access to the devices location";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "This app requires access to the devices location";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -569,6 +583,8 @@
 				DEVELOPMENT_TEAM = 73U243ADJK;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "This app requires access to the devices location";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "This app requires access to the devices location";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

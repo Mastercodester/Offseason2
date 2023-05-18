@@ -18,6 +18,8 @@ struct Home_Page: View {
     
     @StateObject private var weatherViewModel = WeatherViewModel()
     
+     @EnvironmentObject private var locationVm : LocationManager
+    
     var body: some View {
         NavigationView{
             ZStack{
@@ -27,9 +29,7 @@ struct Home_Page: View {
                    NotificationButton
                     Spacer()
                 ActivegamesButton
-                  
-                    
-                    Spacer()
+                        Spacer()
                     WeatherButton
                    
                 }.padding()
@@ -46,7 +46,8 @@ struct Home_Page: View {
                 }.padding()
               Spacer()
                 Spacer()
-                
+                Text("Location: \n\(locationVm.location?.coordinate.latitude ?? 0.00),\(locationVm.location?.coordinate.longitude ?? 0.00)")
+
                 HStack {
                     FilterButton
                     
@@ -92,14 +93,35 @@ struct Home_Page: View {
 struct Home_Page_Previews: PreviewProvider {
     static var previews: some View {
         Home_Page()
+            .environmentObject(LocationManager())
+
     }
 }
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 private extension Home_Page{
-    
-    
     
     var NotificationButton:  some View {
         Button(action: { self.presentnotificationSheet.toggle() }) {
