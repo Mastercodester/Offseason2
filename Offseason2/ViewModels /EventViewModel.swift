@@ -37,7 +37,7 @@ class EventViewModel: ObservableObject {
                 
         let documentRef = try await db.collection("events").addDocument(data: event.dictionary)
             // this is to make sure we are updating the the 'spot' on xcode when a new value is inputed, so thay we have a id before its in fb
-                self.events = event
+                self.events = event 
                 self.events.id = documentRef.documentID
                 print("😎 Data added succesfully ")
                 return true

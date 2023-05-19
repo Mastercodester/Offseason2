@@ -23,6 +23,8 @@ struct Offseason2App: App {
 
     @StateObject var locationManager = LocationManager()
     @StateObject var eventViewModel = EventViewModel()
+    @StateObject var weatherViewModel = WeatherViewModel()
+
     @StateObject var mapVm = MapViewModel()
 
     init(){
@@ -31,12 +33,15 @@ struct Offseason2App: App {
 
     var body: some Scene {
         WindowGroup {
+            ContentView()
 //            TestDataView()
-            Home_Page(event:Event())
+//            Home_Page(event:Event())
 //            AddEvent(event: Event())
                 .environmentObject(eventViewModel)
             .environmentObject(locationManager)
             .environmentObject(mapVm)
+            .environmentObject(weatherViewModel)
+
 
         }
     }

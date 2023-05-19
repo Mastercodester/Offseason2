@@ -17,23 +17,14 @@ struct ContentView: View {
  
     var body: some View {
         NavigationView{
-             
              TabView{
-                 
-                 
                  Group{
                      Home_Page(event: Event())
                          .tabItem{
                              Label("Home",systemImage: "house.circle")
                             
                          }
-                     
                    ExplorePage()
-                     
-                     
-                     
-                     
-                     
                          .tabItem{
                              Label("Explore",systemImage: "magnifyingglass.circle")
                              Image(systemName: "")
@@ -45,11 +36,7 @@ struct ContentView: View {
                      
               ProfilePage()
                      
-                     
-                     
-                     
-                     
-                         .tabItem{
+                     .tabItem{
                              Label("Profile",systemImage: "person.crop.circle")
                              
                                

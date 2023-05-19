@@ -30,7 +30,7 @@ struct Home_Page: View {
     let regionSize = 500.0
 
     
-    @StateObject private var weatherViewModel = WeatherViewModel()
+    @EnvironmentObject private var weatherViewModel: WeatherViewModel
     
      @EnvironmentObject private var locationVm : LocationManager
     @EnvironmentObject private var mapVm : MapViewModel
@@ -41,30 +41,28 @@ struct Home_Page: View {
         NavigationView{
             ZStack{
                 mapLayer
-                VStack{
-                    Spacer()
-                    Spacer()
-                    HStack {
-                        FilterButton
-                        Spacer()
-                        Spacer()
-                        CreateButton
-                    }.padding()
-                    
-                }
             } .ignoresSafeArea()
             .toolbar{
+                ToolbarItemGroup(placement: .bottomBar) {
+                    VStack {
+                        HStack(spacing: 12){
+                            FilterButton
+                            Spacer()
+                            CreateButton
+                                .offset(x:20,y:-20)
+                        }.padding(.bottom,30)
+                    }
+                }
                 ToolbarItemGroup(placement: .cancellationAction) {
                     VStack{
                         NotificationButton
                         HelpButton
                     }
-                    .padding(.top,70)
-                
+                    .padding(.top,60)
+            
                 }
                 ToolbarItemGroup(placement: .primaryAction) {
-                    
-                    HStack(spacing: 30){
+                    HStack(spacing: 2){
                         ActivegamesButton
                         WeatherButton
                          
@@ -75,20 +73,7 @@ struct Home_Page: View {
                 eventVm.allEvents = events
                 mapVm.mapRegion = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: locationVm.location?.coordinate.longitude ?? 0.00, longitude: locationVm.location?.coordinate.latitude ?? 0.00), span:MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1))
             }
-//            }.onAppear{
-//
-//
-//
-//
-//                if event.id != nil { // if we have a spot center it on the map
-//                    mapRegion = MKCoordinateRegion(center: event.coordinate, latitudinalMeters: regionSize, longitudinalMeters: regionSize)
-//                } else {// otherwise  center the map on the devices location
-//                    Task {
-//                        // make map region shows user lo
-//                        mapRegion = MKCoordinateRegion(center: locationVm.location?.coordinate  ?? CLLocationCoordinate2D(), latitudinalMeters: regionSize, longitudinalMeters: regionSize)
-//                    }
-//                }
-//            }
+
             
         } .sheet(isPresented: self.$presentCreateSheet){
            AddEvent(event: Event())
@@ -121,6 +106,8 @@ struct Home_Page_Previews: PreviewProvider {
             .environmentObject(LocationManager())
             .environmentObject(MapViewModel())
             .environmentObject(EventViewModel())
+            .environmentObject(WeatherViewModel())
+
 
 
 
@@ -151,6 +138,7 @@ struct Home_Page_Previews: PreviewProvider {
 
 
 private extension Home_Page{
+    // new code ⚡️
     var mapLayer : some View{
         Map(coordinateRegion: $mapVm.mapRegion,
             showsUserLocation: true,
@@ -169,7 +157,7 @@ private extension Home_Page{
     }
     
     
-    
+    // new code ⚡️
     var NotificationButton:  some View {
         Button(action: { self.presentnotificationSheet.toggle() }) {
             Image(systemName: "bell.circle.fill").font(.system(size: 35))
@@ -180,7 +168,7 @@ private extension Home_Page{
         }
         
     }
-    
+    // new code ⚡️
     var ActivegamesButton: some View {
         Button{
             
@@ -202,6 +190,7 @@ private extension Home_Page{
                      x: 0, y: 15)
     }
     
+    // new code ⚡️
     var WeatherButton: some View {
         Button{
             self.presentWeatherSheet.toggle()
@@ -213,7 +202,7 @@ private extension Home_Page{
             }.foregroundColor(.black)
                 .buttonStyle(.plain)
                 .padding()
-                .frame(width: .infinity, height: 48)
+                .frame(width: .infinity, height: 40)
                 .background(.thinMaterial).cornerRadius(90)
                 .shadow(color: Color.black.opacity (0.4), radius: 20,
                          x: 0, y: 15)
@@ -224,7 +213,7 @@ private extension Home_Page{
         
     }
         
-        
+    // new code ⚡️
     var HelpButton: some View {
         Button{
             self.presentHelpSheet.toggle()
@@ -242,6 +231,8 @@ private extension Home_Page{
         }.shadow(color: Color.black.opacity (0.4), radius: 20,
                  x: 0, y: 15)
     }
+    
+    // new code ⚡️
     var FilterButton: some View {
         Button{
             self.presentfilterSheet.toggle()
@@ -249,13 +240,18 @@ private extension Home_Page{
             Image(systemName: "line.3.horizontal.decrease.circle.fill").font(.system(size: 35)).foregroundColor(.black)
         }
     }
-                
-                var CreateButton: some View {
-                    Button{
+                // new code ⚡️
+        var CreateButton: some View {
+            Button{
                         self.presentCreateSheet.toggle()
                     }label: {
-                        Image(systemName: "plus.circle.fill").font(.system(size: 45)).foregroundColor(.black)
+                        Image(systemName: "plus.circle.fill")
+                            .font(.system(size: 50)).foregroundColor(.red)
+                            .shadow(color: Color.black.opacity (0.4), radius: 20,
+                                     x: 0, y: 15)
                     }
+//                    .offset(y:-25
+//                    )
                 
             
             
