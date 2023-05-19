@@ -31,7 +31,9 @@ struct Event: Identifiable,Codable,Equatable {
     }
 
     var dictionary:[String:Any]{
-        return ["name": name,"hostName" : hostName,"locationName":locationName,"address":address,"latitude" : latitude,"longitude":longitude,"category" :category,"description" : description,
+        return ["name": name,"hostName" : hostName,"locationName":locationName,"address":address,"latitude": latitude,"longitude":longitude,"category" :category,"description" : description,"startDate" : startDate,
+                
+                "startTime" : startTime,"endTime" : endTime,"phoneNumber" : phoneNumber,"summary" : summary
         ]
     }
 }

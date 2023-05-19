@@ -8,7 +8,7 @@
 
 import CoreLocation
 import FirebaseCore
-import FirebaseFirestore
+import FirebaseFirestoreSwift
 import FirebaseDatabase
 import MapKit
 import SwiftUI
@@ -22,7 +22,7 @@ struct AddEvent: View {
     @EnvironmentObject private var eventVm: EventViewModel
     @State var event: Event
     @Environment(\.dismiss) private var dismiss
-
+    @FirestoreQuery(collectionPath: "events") var events : [Event]
     var body: some View {   
         NavigationStack{
             VStack{
@@ -54,6 +54,9 @@ struct AddEvent: View {
                     
                     
                 }
+                List(events) { event in
+                    Text(event.name)
+                }  
             }.toolbar{
                 ToolbarItem(placement: .automatic) {
                     saveButton
