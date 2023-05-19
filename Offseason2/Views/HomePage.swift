@@ -29,65 +29,51 @@ struct Home_Page: View {
 //    @State private var mapRegion = MKCoordinateRegion()
     let regionSize = 500.0
 
-    @State private var mapRegion = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: 42.331578, longitude: -83.045839), span:MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1))
     
     @StateObject private var weatherViewModel = WeatherViewModel()
     
      @EnvironmentObject private var locationVm : LocationManager
-    
+    @EnvironmentObject private var mapVm : MapViewModel
+    @EnvironmentObject private var eventVm : EventViewModel
+
+
     var body: some View {
         NavigationView{
             ZStack{
-                
-                Map(coordinateRegion: $mapRegion,showsUserLocation: true, annotationItems:events){
-                    annotation in
-                    MapMarker(coordinate: annotation.coordinate)
-                }.ignoresSafeArea()
-                
-                
-                
-                
+                mapLayer
                 VStack{
-                    HStack {
-                        NotificationButton
-                        Spacer()
-                        ActivegamesButton
-                        Spacer()
-                        WeatherButton
-                        
-                    }.padding()
-                    
-                    
-                    HStack {
-                        HelpButton
-                        
-                        
-                        Spacer()
-                        
-                        Spacer()
-                        
-                    }.padding()
                     Spacer()
                     Spacer()
-                    Text("Location: \n\(locationVm.location?.coordinate.latitude ?? 0.00),\(locationVm.location?.coordinate.longitude ?? 0.00)")
-                    
                     HStack {
                         FilterButton
-                        
-                        
                         Spacer()
-                        
                         Spacer()
-                        
                         CreateButton
-                        
-                        
                     }.padding()
                     
                 }
+            } .ignoresSafeArea()
+            .toolbar{
+                ToolbarItemGroup(placement: .cancellationAction) {
+                    VStack{
+                        NotificationButton
+                        HelpButton
+                    }
+                    .padding(.top,70)
+                
+                }
+                ToolbarItemGroup(placement: .primaryAction) {
+                    
+                    HStack(spacing: 30){
+                        ActivegamesButton
+                        WeatherButton
+                         
+                    }
+                }
             }
             .onAppear {
-                mapRegion = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: locationVm.location?.coordinate.longitude ?? 0.00, longitude: locationVm.location?.coordinate.latitude ?? 0.00), span:MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1))
+                eventVm.allEvents = events
+                mapVm.mapRegion = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: locationVm.location?.coordinate.longitude ?? 0.00, longitude: locationVm.location?.coordinate.latitude ?? 0.00), span:MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1))
             }
 //            }.onAppear{
 //
@@ -105,7 +91,7 @@ struct Home_Page: View {
 //            }
             
         } .sheet(isPresented: self.$presentCreateSheet){
-           CreateGameForm()
+           AddEvent(event: Event())
                 .presentationDetents([.medium, .large])
           }
         
@@ -132,7 +118,11 @@ struct Home_Page: View {
 struct Home_Page_Previews: PreviewProvider {
     static var previews: some View {
         Home_Page(event:Event())
-            .environmentObject(LocationManager())  
+            .environmentObject(LocationManager())
+            .environmentObject(MapViewModel())
+            .environmentObject(EventViewModel())
+
+
 
     }
 }
@@ -161,11 +151,31 @@ struct Home_Page_Previews: PreviewProvider {
 
 
 private extension Home_Page{
+    var mapLayer : some View{
+        Map(coordinateRegion: $mapVm.mapRegion,
+            showsUserLocation: true,
+            annotationItems:events,
+            annotationContent:{
+            event in
+            MapAnnotation(coordinate: event.coordinate){
+                LocationMapPin()
+                    .scaleEffect(mapVm.eventLocation == event ? 1 : 0.7)
+                     .onTapGesture{
+                        mapVm.showNextEvent(event)
+                    }
+                
+            }
+        })
+    }
+    
+    
     
     var NotificationButton:  some View {
         Button(action: { self.presentnotificationSheet.toggle() }) {
-            Image(systemName: "bell.circle.fill").font(.system(size: 35)) .font(.system(size:(20)))
-                .foregroundColor(.black)
+            Image(systemName: "bell.circle.fill").font(.system(size: 35))
+                .foregroundColor(.blue)
+                .shadow(color: Color.black.opacity (0.4), radius: 20,
+                         x: 0, y: 15)
             
         }
         
@@ -177,12 +187,19 @@ private extension Home_Page{
         }label: {
             HStack {
                 Image(systemName: "figure.run.circle.fill")
-                Text("Active: 8") .font(.system(size:(20)))
+                Text("Active:") .font(.title3)
+                    .bold()
+//                Spacer()
+
+                Text("4")
+
             }
         }.buttonStyle(.plain)
             .padding()
-            .frame(width: 160)
-            .background(Color(.gray)).cornerRadius(90)
+            .frame(width: 160,height: 40)
+            .background(.thinMaterial).cornerRadius(90)
+            .shadow(color: Color.black.opacity (0.4), radius: 20,
+                     x: 0, y: 15)
     }
     
     var WeatherButton: some View {
@@ -197,7 +214,9 @@ private extension Home_Page{
                 .buttonStyle(.plain)
                 .padding()
                 .frame(width: .infinity, height: 48)
-                .background(Color(.gray)).cornerRadius(90)
+                .background(.thinMaterial).cornerRadius(90)
+                .shadow(color: Color.black.opacity (0.4), radius: 20,
+                         x: 0, y: 15)
         }
 //        Text(weatherViewModel.currentTemperature.dropLast())
 //            .font(.system(size:72))
@@ -210,10 +229,18 @@ private extension Home_Page{
         Button{
             self.presentHelpSheet.toggle()
         }label: {
-            Image(systemName: "checkerboard.shield").font(.system(size: 35))
-                .foregroundColor(.black)
-            
-        }
+            ZStack{
+                Circle()
+                    .frame(width: 50, height: 45)
+                    .foregroundColor(.red)
+
+                Image(systemName: "cross.case").font(.system(size: 20))
+//                    .fill(.ultraThinMaterial)
+                    .foregroundColor(.white)
+            }
+             
+        }.shadow(color: Color.black.opacity (0.4), radius: 20,
+                 x: 0, y: 15)
     }
     var FilterButton: some View {
         Button{

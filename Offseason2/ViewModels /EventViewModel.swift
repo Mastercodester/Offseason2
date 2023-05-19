@@ -7,6 +7,8 @@
 
 import Foundation
 import FirebaseFirestore
+import FirebaseFirestoreSwift
+
 import UIKit
 import FirebaseStorage
 
@@ -14,6 +16,9 @@ import FirebaseStorage
 @MainActor
 class EventViewModel: ObservableObject {
     @Published var events = Event()
+    
+    var allEvents:[Event] = []
+
     
     func saveEvent(event:Event) async -> Bool{
         let db = Firestore.firestore()

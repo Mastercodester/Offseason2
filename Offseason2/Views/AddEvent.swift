@@ -36,46 +36,46 @@ struct AddEvent: View {
         NavigationStack{
             VStack{
                 Form{
-                
+                    
                     Section(header: Text("Event Details")) {
                         TextField("Event Name",text:$event.name)
                         TextField("Summary",text:$event.summary)
                         TextField("Description",text:$event.description)
-                       
+                        
                         Button("Location"){
                             showPlaceLookupSheet.toggle()
                         }
                         TextField("Location Name",text:$event.locationName)
-
+                        
                         TextField("Address",text:$event.address)
-
+                        
                         
                         
                         
                         Button("Ticket Details"){
                             //TODO: ADD ANOTHER PAGE TO ADD HERE
                         }
-                         
-                     }
+                        
+                    }
                     
                     
                     
                     
                     
                 }
-//                List(events) { event in
-//                    Text(event.name)
-//                }
-                Map(coordinateRegion: $mapRegion,showsUserLocation: true, annotationItems:events){
-                    annotation in
-                    MapMarker(coordinate: annotation.coordinate)
-                }.frame(height: 290)
+                //                List(events) { event in
+                //                    Text(event.name)
+                //                }
+//                Map(coordinateRegion: $mapRegion,showsUserLocation: true, annotationItems:events){
+//                    annotation in
+//                    MapMarker(coordinate: annotation.coordinate)
+//                }.frame(height: 290)
+//                
                 
-                
-                 
-            }.onAppear {
-                mapRegion = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: locationVm.location?.coordinate.longitude ?? 0.00, longitude: locationVm.location?.coordinate.latitude ?? 0.00), span:MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1))
             }
+//            }.onAppear {
+//                mapRegion = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: locationVm.location?.coordinate.longitude ?? 0.00, longitude: locationVm.location?.coordinate.latitude ?? 0.00), span:MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1))
+//            }
             .toolbar{
                 ToolbarItem(placement: .automatic) {
                     saveButton

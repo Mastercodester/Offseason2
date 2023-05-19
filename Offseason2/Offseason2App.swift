@@ -23,7 +23,8 @@ struct Offseason2App: App {
 
     @StateObject var locationManager = LocationManager()
     @StateObject var eventViewModel = EventViewModel()
-    
+    @StateObject var mapVm = MapViewModel()
+
     init(){
         FirebaseApp.configure()
     }
@@ -35,6 +36,8 @@ struct Offseason2App: App {
 //            AddEvent(event: Event())
                 .environmentObject(eventViewModel)
             .environmentObject(locationManager)
+            .environmentObject(mapVm)
+
         }
     }
 }
