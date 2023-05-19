@@ -31,8 +31,8 @@ struct Offseason2App: App {
     var body: some Scene {
         WindowGroup {
 //            TestDataView()
-//            Home_Page(event:Event())
-            AddEvent(event: Event())
+            Home_Page(event:Event())
+//            AddEvent(event: Event())
                 .environmentObject(eventViewModel)
             .environmentObject(locationManager)
         }

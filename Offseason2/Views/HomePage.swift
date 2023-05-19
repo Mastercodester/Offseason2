@@ -26,10 +26,10 @@ struct Home_Page: View {
     
     //for Map
     @State private var annotations: [Annotation] = []
-    @State private var mapRegion = MKCoordinateRegion()
+//    @State private var mapRegion = MKCoordinateRegion()
     let regionSize = 500.0
 
-
+    @State private var mapRegion = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: 42.331578, longitude: -83.045839), span:MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1))
     
     @StateObject private var weatherViewModel = WeatherViewModel()
     
@@ -39,72 +39,70 @@ struct Home_Page: View {
         NavigationView{
             ZStack{
                 
+                Map(coordinateRegion: $mapRegion,showsUserLocation: true, annotationItems:events){
+                    annotation in
+                    MapMarker(coordinate: annotation.coordinate)
+                }.ignoresSafeArea()
                 
-                List(events){ event in
-                    Text(event.name)
-                }
-//                Map(coordinateRegion: $locationVm.region,showsUserLocation: true, annotationItems:events){
-//                    annotation in
-//                    MapMarker(coordinate: annotation.coordinate)
-//                }.ignoresSafeArea()
-//                    .onChange(of:event){ _ in
-//                        annotations = [Annotation(name: event.name, address: event.address, coordinate: event.coordinate)]
-//                        mapRegion.center = event.coordinate
-                   // }
-//            Color.teal.ignoresSafeArea()
-            VStack{
-                HStack {
-                   NotificationButton
-                    Spacer()
-                ActivegamesButton
+                
+                
+                
+                VStack{
+                    HStack {
+                        NotificationButton
                         Spacer()
-                    WeatherButton
-                   
-                }.padding()
-                
-                
-                HStack {
-                    HelpButton
-                   
+                        ActivegamesButton
+                        Spacer()
+                        WeatherButton
+                        
+                    }.padding()
                     
+                    
+                    HStack {
+                        HelpButton
+                        
+                        
+                        Spacer()
+                        
+                        Spacer()
+                        
+                    }.padding()
                     Spacer()
-                
                     Spacer()
-                   
-                }.padding()
-              Spacer()
-                Spacer()
-                Text("Location: \n\(locationVm.location?.coordinate.latitude ?? 0.00),\(locationVm.location?.coordinate.longitude ?? 0.00)")
-
-                HStack {
-                    FilterButton
+                    Text("Location: \n\(locationVm.location?.coordinate.latitude ?? 0.00),\(locationVm.location?.coordinate.longitude ?? 0.00)")
                     
-                   
-                    Spacer()
-                
-                    Spacer()
+                    HStack {
+                        FilterButton
+                        
+                        
+                        Spacer()
+                        
+                        Spacer()
+                        
+                        CreateButton
+                        
+                        
+                    }.padding()
                     
-                    CreateButton
-                    
-                    
-                }.padding()
-               
-            }
-          
-            }.onAppear{
-                
-                
-                
-                
-                if event.id != nil { // if we have a spot center it on the map
-                    mapRegion = MKCoordinateRegion(center: event.coordinate, latitudinalMeters: regionSize, longitudinalMeters: regionSize)
-                } else {// otherwise  center the map on the devices location
-                    Task {
-                        // make map region shows user lo
-                        mapRegion = MKCoordinateRegion(center: locationVm.location?.coordinate  ?? CLLocationCoordinate2D(), latitudinalMeters: regionSize, longitudinalMeters: regionSize)
-                    }
                 }
             }
+            .onAppear {
+                mapRegion = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: locationVm.location?.coordinate.longitude ?? 0.00, longitude: locationVm.location?.coordinate.latitude ?? 0.00), span:MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1))
+            }
+//            }.onAppear{
+//
+//
+//
+//
+//                if event.id != nil { // if we have a spot center it on the map
+//                    mapRegion = MKCoordinateRegion(center: event.coordinate, latitudinalMeters: regionSize, longitudinalMeters: regionSize)
+//                } else {// otherwise  center the map on the devices location
+//                    Task {
+//                        // make map region shows user lo
+//                        mapRegion = MKCoordinateRegion(center: locationVm.location?.coordinate  ?? CLLocationCoordinate2D(), latitudinalMeters: regionSize, longitudinalMeters: regionSize)
+//                    }
+//                }
+//            }
             
         } .sheet(isPresented: self.$presentCreateSheet){
            CreateGameForm()
