@@ -23,7 +23,8 @@ struct Home_Page: View {
     @State var presentHelpSheet = false
     @State var presentfilterSheet = false
     @State var presentCreateSheet = false
-    
+    @State var myRegion = MKCoordinateRegion()
+
     //for Map
     @State private var annotations: [Annotation] = []
 //    @State private var mapRegion = MKCoordinateRegion()
@@ -69,15 +70,19 @@ struct Home_Page: View {
                     }
                 }
             }
+            .task {
+                // make map region shows user lo
+                myRegion = MKCoordinateRegion(center: locationVm.location?.coordinate  ?? CLLocationCoordinate2D(), latitudinalMeters: regionSize, longitudinalMeters: regionSize)
+            }
             .onAppear {
                 eventVm.allEvents = events
-                mapVm.mapRegion = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: locationVm.location?.coordinate.longitude ?? 0.00, longitude: locationVm.location?.coordinate.latitude ?? 0.00), span:MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1))
+//                mapVm.mapRegion = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: locationVm.location?.coordinate.longitude ?? 0.00, longitude: locationVm.location?.coordinate.latitude ?? 0.00), span:MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1))
             }
 
             
         } .sheet(isPresented: self.$presentCreateSheet){
            AddEvent(event: Event())
-                .presentationDetents([.medium, .large])
+
           }
         
         .sheet(isPresented: self.$presentfilterSheet){

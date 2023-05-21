@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		09648BA12A1AAA9600C8BB6F /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09648BA02A1AAA9600C8BB6F /* Player.swift */; };
 		0967AC412A16630300800D73 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0967AC402A16630300800D73 /* LocationManager.swift */; };
 		0967AC432A166AEA00800D73 /* Annotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0967AC422A166AEA00800D73 /* Annotation.swift */; };
 		0967AC452A166DA300800D73 /* EventPlace.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0967AC442A166DA300800D73 /* EventPlace.swift */; };
@@ -70,6 +71,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		09648BA02A1AAA9600C8BB6F /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		0967AC402A16630300800D73 /* LocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		0967AC422A166AEA00800D73 /* Annotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Annotation.swift; sourceTree = "<group>"; };
 		0967AC442A166DA300800D73 /* EventPlace.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventPlace.swift; sourceTree = "<group>"; };
@@ -225,6 +227,7 @@
 				78FACE6C2A1568F300E317AE /* WeatherViewModel.swift */,
 				0967AC422A166AEA00800D73 /* Annotation.swift */,
 				0967AC442A166DA300800D73 /* EventPlace.swift */,
+				09648BA02A1AAA9600C8BB6F /* Player.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -416,6 +419,7 @@
 				78FACE2A2A15622100E317AE /* ContentView.swift in Sources */,
 				78FACE662A15688C00E317AE /* filterspage2.swift in Sources */,
 				0967AC4F2A166F5100800D73 /* EventViewModel.swift in Sources */,
+				09648BA12A1AAA9600C8BB6F /* Player.swift in Sources */,
 				0967AC452A166DA300800D73 /* EventPlace.swift in Sources */,
 				0967AC572A168A9600800D73 /* CreateEventView .swift in Sources */,
 				78FACE622A15685200E317AE /* HelpPage.swift in Sources */,
