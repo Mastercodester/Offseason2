@@ -9,8 +9,7 @@ import SwiftUI
 
 struct NotificationPage: View {
     var body: some View {
-       
-                NavigationView {
+                NavigationStack {
                     ZStack {
                         VStack {
                            

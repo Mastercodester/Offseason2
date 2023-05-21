@@ -24,19 +24,18 @@ struct Offseason2App: App {
     @StateObject var locationManager = LocationManager()
     @StateObject var eventViewModel = EventViewModel()
     @StateObject var weatherViewModel = WeatherViewModel()
-
     @StateObject var mapVm = MapViewModel()
-
     init(){
         FirebaseApp.configure()
     }
 
     var body: some Scene {
         WindowGroup {
-            ContentView()
+//            ContentView()
 //            TestDataView()
 //            Home_Page(event:Event())
 //            AddEvent(event: Event())
+             CreateUserPage()
                 .environmentObject(eventViewModel)
             .environmentObject(locationManager)
             .environmentObject(mapVm)

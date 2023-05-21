@@ -19,6 +19,16 @@ class EventViewModel: ObservableObject {
     
     var allEvents:[Event] = []
 
+    //TODO: create type Player
+    // this should be a path in firebase 
+    var joinedPlayers:[Event] = []
+
+    
+    func addEvent(event: Event) {
+        allEvents.append(event)
+        //
+    }
+    
     
     func saveEvent(event:Event) async -> Bool{
         let db = Firestore.firestore()

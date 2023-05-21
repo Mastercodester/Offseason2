@@ -15,8 +15,9 @@ import SwiftUI
 
 
 struct AddEvent: View {
+    @State private var annotations: [Annotation] = []
+    @State private var showMap = false
     @State private var showPlaceLookupSheet = false
-
     @State var isPickerShowing = false
     let mapSpan = MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1)
 
@@ -33,64 +34,109 @@ struct AddEvent: View {
 //    (locationVm.location?.coordinate.latitude ?? 0.00),\(locationVm.location?.coordinate.longitude ?? 0.00)")
 
     var body: some View {   
-        NavigationStack{
-            VStack{
-                Form{
+    NavigationStack{
+        
+        ScrollView {
+            ZStack {
+                VStack{
+                    coverPhoto
+                   Spacer()
+                    VStack{
+                                            Section(header: Text("Customize Your Game ")
+                                                .bold()
+                                                .font(.title)) {
+                                                    VStack{
+                                                        TextField("Event Name",text:$event.name)
+                                                            .textFieldStyle (.roundedBorder)
+                                                                .overlay {
+                                                                RoundedRectangle (cornerRadius: 5)
+                                                                .stroke(.gray.opacity(0.5), lineWidth: event.id == nil ? 2 : 0)
+                                                            }
+                                                        TextField("Summary",text:$event.summary)
+                                                            .textFieldStyle (.roundedBorder)
+                                                                .overlay {
+                                                                RoundedRectangle (cornerRadius: 5)
+                                                                .stroke(.gray.opacity(0.5), lineWidth: event.id == nil ? 2 : 0)
+                                                            }
+                                                        TextField("Description",text:$event.description)
+                                                            .textFieldStyle (.roundedBorder)
+                                                                .overlay {
+                                                                RoundedRectangle (cornerRadius: 5)
+                                                                .stroke(.gray.opacity(0.5), lineWidth: event.id == nil ? 2 : 0)
+                                                            }
+                                                    Button("Location"){
+                                        showPlaceLookupSheet.toggle()
+                                            showMap.toggle()
+
+                                                        }.frame(width: 360,height:40)
+                                                        .textFieldStyle (.roundedBorder)
+                                                            .overlay {
+                                                            RoundedRectangle (cornerRadius: 5)
+                                                            .stroke(.gray.opacity(0.5), lineWidth: event.id == nil ? 2 : 0)
+                                                        }
+                                                        // if the text field is no longer empty
+                                                       
+                                                        if !event.locationName.isEmpty && !event.address.isEmpty {
+                                                        TextField("Location Name",text:$event.locationName).disabled(true)
+                                                            .textFieldStyle (.roundedBorder)
+                                                                .overlay {
+                                                                RoundedRectangle (cornerRadius: 5)
+                                                                .stroke(.gray.opacity(0.5), lineWidth: event.id == nil ? 2 : 0)
+                                                            }
+                                                        
+                                                        TextField("Address",text:$event.address).disabled(true)
+                                                            .textFieldStyle (.roundedBorder)
+                                                                .overlay {
+                                                                RoundedRectangle (cornerRadius: 5)
+                                                                .stroke(.gray.opacity(0.5), lineWidth: event.id == nil ? 2 : 0)
+                                                            }
+                                                        
+                                                        
+                                                        
+                                                      Text("Confirm your location is correct")
+                                                                .bold()
+                                                                .font(.title2)
+                                                            Map(coordinateRegion: $mapRegion,showsUserLocation: true, annotationItems:annotations){
+                                                                annotation in
+                                                                MapMarker(coordinate: annotation.coordinate)
+                                                            }
+                                                            .cornerRadius(20).frame(height: 250)
+                                                            
+                                                                .onChange(of:event){ _ in
+                                                                    annotations = [Annotation(name: event.name, address: event.address, coordinate: event.coordinate)]
+                                                                    mapRegion.center = event.coordinate
+                                                                }
+                                                        }
+                                                        Button("Ticket Details"){
+                                                            //TODO: ADD ANOTHER PAGE TO ADD HERE
+                                                        }
+                                                    }
+                                                    
+                                            }
+                                    .padding(.horizontal)
+                                  Spacer()
+                                        }
                     
-                    Section(header: Text("Event Details")) {
-                        TextField("Event Name",text:$event.name)
-                        TextField("Summary",text:$event.summary)
-                        TextField("Description",text:$event.description)
-                        
-                        Button("Location"){
-                            showPlaceLookupSheet.toggle()
+                }
+            }
+        //
+                    .toolbar{
+                        ToolbarItem(placement: .automatic) {
+                            saveButton
+                           
                         }
-                        TextField("Location Name",text:$event.locationName)
                         
-                        TextField("Address",text:$event.address)
-                        
-                        
-                        
-                        
-                        Button("Ticket Details"){
-                            //TODO: ADD ANOTHER PAGE TO ADD HERE
+                        ToolbarItem(placement: .cancellationAction) {
+                            Button("Back"){
+                                dismiss()
+                            }
                         }
-                        
                     }
-                    
-                    
-                    
-                    
-                    
+                    .sheet(isPresented: $showPlaceLookupSheet) {
+                        PlaceLookupView(event: $event)
                 }
-                //                List(events) { event in
-                //                    Text(event.name)
-                //                }
-//                Map(coordinateRegion: $mapRegion,showsUserLocation: true, annotationItems:events){
-//                    annotation in
-//                    MapMarker(coordinate: annotation.coordinate)
-//                }.frame(height: 290)
-//                
-                
-            }
-//            }.onAppear {
-//                mapRegion = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: locationVm.location?.coordinate.longitude ?? 0.00, longitude: locationVm.location?.coordinate.latitude ?? 0.00), span:MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1))
-//            }
-            .toolbar{
-                ToolbarItem(placement: .automatic) {
-                    saveButton
-                   
-                }
-                
-                ToolbarItem(placement: .cancellationAction) {
-                    Button("Back"){
-                        dismiss()
-                    }
-                }
-            }
-            .sheet(isPresented: $showPlaceLookupSheet) {
-                PlaceLookupView(event: $event)
-            }
+        }
+        
             
         }
         
@@ -127,8 +173,29 @@ private extension AddEvent {
         }
     }
         // new code
+    var coverPhoto : some View {
+        Image ("wtm")
+            .resizable()
+            .scaledToFill()
+            .frame(width:350,height: 240)
+            .cornerRadius(10)
+            .clipped()
+            .overlay(
+                HStack{
+                    Button{}
+                label:{
+                    Image(systemName: "photo")
+                    Text("Cover Photos")
+                }
+                }
+                    .foregroundColor(.black)
+                    .padding()
+                    .background(.orange)
+                    .cornerRadius(20))
+    }
     
-    
+    // new code
+
     
     
 }

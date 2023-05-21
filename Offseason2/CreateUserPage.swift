@@ -14,18 +14,13 @@ import FirebaseStorage
 
 
 class FirebaseManager: NSObject {
-    
     let auth: Auth
     let storage: Storage
-    
     static let shared = FirebaseManager()
-    
     override init() {
         FirebaseApp.configure()
-        
         self.auth = Auth.auth()
         self.storage = Storage.storage()
-        
         super.init()
     }
     
@@ -35,9 +30,18 @@ struct CreateUserPage: View {
     @State var isLoginMode = false
     @State var email = ""
     @State var password = ""
-    
+    @State private var alertMessage = ""
+    @State private var showingAlert = false
+
+    @State private var presentSheet = false
+    @State private var buttonsDisabled = false
     @State var shouldShowImagePicker = false
     
+    @FocusState private var focusField: Field?
+
+    enum Field{
+        case email,password
+    }
     var body: some View {
         NavigationView {
             ScrollView {
@@ -79,14 +83,40 @@ struct CreateUserPage: View {
                     Group {
                         TextField("Email", text: $email)
                             .keyboardType(.emailAddress)
+                            .autocorrectionDisabled()
+                            .textInputAutocapitalization(.never)
+                            .submitLabel(.next)
+                            .focused($focusField, equals: .email)
+                            .onSubmit{
+                              focusField = .password
+                            }
+                            .onChange(of: email){ _ in
+                                enablebuttons()
+                            }
                             .autocapitalization(.none)
+                        
                         SecureField("Password", text: $password)
+                            .textInputAutocapitalization(.never)
+                            .submitLabel(.done)
+                        .focused($focusField, equals: .password)
+                            .onSubmit{
+                                focusField = nil
+                            }.onChange(of: password){ _ in
+                                enablebuttons()
+                            }
                     }
                     .padding(12)
                     .background(Color.white)
                     
                     Button {
-                        handleAction()
+                        if isLoginMode {
+                            login()
+                        } else {
+                            register()
+                        }
+
+                        
+//                        handleAction()
                     } label: {
                         HStack {
                             Spacer()
@@ -105,10 +135,27 @@ struct CreateUserPage: View {
                 .padding()
                 
             }
+            .onAppear{
+                // if logged in when the app runs, navigate to the new screen
+                if Auth.auth().currentUser != nil {
+                    print ("🪵 Login successful !")
+                   presentSheet = true
+                    
+                }
+            }
+            .fullScreenCover(isPresented: $presentSheet){
+                ContentView()
+            }
+            
             .navigationTitle(isLoginMode ? "Log In" : "Create Account")
             .background(Color(.init(white: 0, alpha: 0.05))
                             .ignoresSafeArea())
-        }
+        } .alert(alertMessage, isPresented: $showingAlert){
+            Button("OK",role:.cancel){
+                 
+            }
+        }// alert
+        
         .navigationViewStyle(StackNavigationViewStyle())
         .fullScreenCover(isPresented: $shouldShowImagePicker, onDismiss: nil) {
             ImagePicker(image: $image)
@@ -116,6 +163,16 @@ struct CreateUserPage: View {
     }
     
     @State var image: UIImage?
+    
+    
+    
+    func enablebuttons(){
+        let emailIsGood = email.count >= 6 && email.contains("@")
+        let passwordIsGood = password.count >= 6
+        buttonsDisabled = !(emailIsGood && passwordIsGood)
+    }
+
+    
     
     private func handleAction() {
         if isLoginMode {
@@ -142,6 +199,53 @@ struct CreateUserPage: View {
     }
     
     @State var loginStatusMessage = ""
+    
+    
+    //tetsing area
+    
+    func register(){
+        Auth.auth().createUser(withEmail:email,password:password){
+            result,error in
+            if let error = error {
+                print("🤬 Error: SIGN-UP Error:\(error.localizedDescription)")
+                alertMessage = "SIGN-UP Error:\(error.localizedDescription)"
+                showingAlert = true
+                // mayhbe
+            }
+            else{
+                print ("😎 Registration success!")
+                /// load list view
+                         presentSheet = true
+
+            }
+        }
+    }
+    
+    
+    
+    func login(){
+        Auth.auth().signIn(withEmail:email,password:password){
+            result,error in
+            if let error = error {
+                print("🤬 Error: Login Error:\(error.localizedDescription)")
+                alertMessage = "Login Error:\(error.localizedDescription)"
+                showingAlert = true
+            }
+            else{
+                print ("🪵 Login successful !")
+                presentSheet = true
+                /// load list view
+            }
+        }
+    }
+    
+    
+    
+    
+    
+    
+    
+    
     
     private func createNewAccount() {
         FirebaseManager.shared.auth.createUser(withEmail: email, password: password) { result, err in
