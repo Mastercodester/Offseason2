@@ -42,11 +42,11 @@ struct AddEvent: View {
                     coverPhoto
                    Spacer()
                     VStack{
-                                            Section(header: Text("Customize Your Game ")
-                                                .bold()
-                                                .font(.title)) {
-                                                    VStack{
-                                                        TextField("Event Name",text:$event.name)
+                    Section(header: Text("Customize Your Game ")
+                                .bold()
+                        .font(.title)) {
+                        VStack{
+                                                        TextField("Event Name",text:$event.name)                             .autocorrectionDisabled()
                                                             .textFieldStyle (.roundedBorder)
                                                                 .overlay {
                                                                 RoundedRectangle (cornerRadius: 5)
