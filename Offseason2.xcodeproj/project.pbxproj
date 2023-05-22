@@ -18,6 +18,7 @@
 		0982E1D72A17E20300A30380 /* LocationMapPin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0982E1D62A17E20300A30380 /* LocationMapPin.swift */; };
 		098BF25C2A169BF500280650 /* PlaceLookupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 098BF25B2A169BF500280650 /* PlaceLookupView.swift */; };
 		098BF25E2A16E0A200280650 /* TestDataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 098BF25D2A16E0A200280650 /* TestDataView.swift */; };
+		0992A3112A1BEBAF00FB9575 /* ExploreCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0992A3102A1BEBAF00FB9575 /* ExploreCard.swift */; };
 		09B66A052A17D2B300F1C18F /* MapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B66A042A17D2B300F1C18F /* MapViewModel.swift */; };
 		78FACE282A15622100E317AE /* Offseason2App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78FACE272A15622100E317AE /* Offseason2App.swift */; };
 		78FACE2A2A15622100E317AE /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78FACE292A15622100E317AE /* ContentView.swift */; };
@@ -81,6 +82,7 @@
 		0982E1D62A17E20300A30380 /* LocationMapPin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationMapPin.swift; sourceTree = "<group>"; };
 		098BF25B2A169BF500280650 /* PlaceLookupView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaceLookupView.swift; sourceTree = "<group>"; };
 		098BF25D2A16E0A200280650 /* TestDataView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestDataView.swift; sourceTree = "<group>"; };
+		0992A3102A1BEBAF00FB9575 /* ExploreCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExploreCard.swift; sourceTree = "<group>"; };
 		09B66A042A17D2B300F1C18F /* MapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewModel.swift; sourceTree = "<group>"; };
 		78FACE242A15622100E317AE /* Offseason2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Offseason2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		78FACE272A15622100E317AE /* Offseason2App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Offseason2App.swift; sourceTree = "<group>"; };
@@ -232,6 +234,7 @@
 		78FACE6F2A156E6E00E317AE /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				0992A3102A1BEBAF00FB9575 /* ExploreCard.swift */,
 				78FACE732A156FB100E317AE /* CreateUserPage.swift */,
 				78FACE532A15659700E317AE /* HomePage.swift */,
 				78FACE5B2A15681E00E317AE /* GamePage.swift */,
@@ -405,6 +408,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0992A3112A1BEBAF00FB9575 /* ExploreCard.swift in Sources */,
 				78FACE682A1568B500E317AE /* ImagePicker.swift in Sources */,
 				0982E1D72A17E20300A30380 /* LocationMapPin.swift in Sources */,
 				0967AC412A16630300800D73 /* LocationManager.swift in Sources */,

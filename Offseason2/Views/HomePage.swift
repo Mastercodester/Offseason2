@@ -13,7 +13,7 @@ import WeatherKit
 
 struct Home_Page: View {
     @State var event: Event
-    @FirestoreQuery(collectionPath:"events") var events: [Event]
+    @FirestoreQuery(collectionPath:"players") var events: [Event]
 
      
     
@@ -37,7 +37,7 @@ struct Home_Page: View {
     @EnvironmentObject private var mapVm : MapViewModel
     @EnvironmentObject private var eventVm : EventViewModel
 
-
+//    @State var player: Player
     var body: some View {
         NavigationView{
             ZStack{
@@ -75,6 +75,8 @@ struct Home_Page: View {
                 myRegion = MKCoordinateRegion(center: locationVm.location?.coordinate  ?? CLLocationCoordinate2D(), latitudinalMeters: regionSize, longitudinalMeters: regionSize)
             }
             .onAppear {
+$events.path = "players/\(eventVm.player.id ?? "")/events"
+
                 eventVm.allEvents = events
 //                mapVm.mapRegion = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: locationVm.location?.coordinate.longitude ?? 0.00, longitude: locationVm.location?.coordinate.latitude ?? 0.00), span:MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1))
             }
