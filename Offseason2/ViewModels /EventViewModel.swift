@@ -15,8 +15,9 @@ import FirebaseStorage
 // this is beacuse we ere going to be updating the ui from this page  so we need to make sure its in the main thread
 @MainActor
 class EventViewModel: ObservableObject {
-    @Published var events = Event()
-    
+    @Published var event = Event()
+    @Published var player = Player()
+   
     var allEvents:[Event] = []
 
     //TODO: create type Player
@@ -30,11 +31,11 @@ class EventViewModel: ObservableObject {
     }
     
     
-    func saveEvent(event:Event) async -> Bool{
+    func savePlayer(player:Player) async -> Bool{
         let db = Firestore.firestore()
-        if let id = event.id { // update the data that alrsady here
+        if let id = player.id { // update the data that alrsady here
         do {
-            try await db.collection("events").document(id).setData (event.dictionary)
+            try await db.collection("players").document(id).setData (player.dictionary)
         print ("😎 Data updated successfully!")
         return true
         } catch {
@@ -45,10 +46,11 @@ class EventViewModel: ObservableObject {
             // add data to firestore
             do{
                 
-        let documentRef = try await db.collection("events").addDocument(data: event.dictionary)
+        let documentRef = try await db.collection("players").addDocument(data: player.dictionary)
             // this is to make sure we are updating the the 'spot' on xcode when a new value is inputed, so thay we have a id before its in fb
-                self.events = event 
-                self.events.id = documentRef.documentID
+                self.player = player
+                
+                self.player.id = documentRef.documentID
                 print("😎 Data added succesfully ")
                 return true
             } catch{
@@ -58,6 +60,51 @@ class EventViewModel: ObservableObject {
             }
         }
     }
+    
+    
+    
+    
+    func saveEvent(player:Player,event:Event) async -> Bool{
+        let db = Firestore.firestore()
+        // this is to make suree we have an spot id
+        guard let playerID = player.id else {
+            print ("🤬ERROR: Could not get player id '")
+            return false
+        }
+        
+        // this is the path that we are storing the reviews to
+        let collectinString = "players/\(playerID)/events"
+        if let id = event.id { // update the data that alrsady here
+            do {
+                try await db.collection(collectinString).document(id).setData(event.dictionary)
+                print ("😎 Data updated successfully!")
+                return true
+            } catch {
+                print ("🤬ERROR: Could not update data in'events \(error.localizedDescription)")
+                return false
+            }
+        } else {
+            // add data to firestore
+            do{
+              _ = try await db.collection(collectinString).addDocument(data: event.dictionary)
+                print("😎 Data added succesfully ")
+                return true
+            } catch {
+                print("🤬Error: could not create new review in 'reviews' \(error.localizedDescription)")
+                return false
+                
+            }
+        }
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
 //func saveImage(event: Event,photo: Photo,image: UIImage) async -> Bool {
 //        guard let spotID = event.id else {

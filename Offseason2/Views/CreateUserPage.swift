@@ -38,10 +38,11 @@ struct CreateUserPage: View {
     @State var shouldShowImagePicker = false
     
     @FocusState private var focusField: Field?
-
+    @EnvironmentObject var eventVm : EventViewModel
     enum Field{
         case email,password
     }
+   @State var player : Player
     var body: some View {
         NavigationView {
             ScrollView {
@@ -81,6 +82,8 @@ struct CreateUserPage: View {
                     }
                     
                     Group {
+            
+                        TextField("Username", text: $player.userName)
                         TextField("Email", text: $email)
                             .keyboardType(.emailAddress)
                             .autocorrectionDisabled()
@@ -137,8 +140,14 @@ struct CreateUserPage: View {
             }
             .onAppear{
                 // if logged in when the app runs, navigate to the new screen
-                if Auth.auth().currentUser != nil {
+                if let user = Auth.auth().currentUser {
                     print ("🪵 Login successful !")
+                    
+#warning("Age not provided by API")
+                //Add the player metadata to our viewmodel
+                    let player = Player(id: user.uid , name: user.displayName ?? "", email: user.email ?? "", userName: user.displayName ?? "", age: 0)
+                eventVm.player = player
+                    
                    presentSheet = true
                     
                 }
@@ -173,35 +182,40 @@ struct CreateUserPage: View {
     }
 
     
-    
-    private func handleAction() {
-        if isLoginMode {
-//            print("Should log into Firebase with existing credentials")
-            loginUser()
-        } else {
-            createNewAccount()
+//
+//    private func handleAction() {
+//        if isLoginMode {
+////            print("Should log into Firebase with existing credentials")
+//            loginUser()
+//        } else {
+//            createNewAccount()
 //            print("Register a new account inside of Firebase Auth and then store image in Storage somehow....")
-        }
-    }
+//        }
+//    }
     
-    private func loginUser() {
-        FirebaseManager.shared.auth.signIn(withEmail: email, password: password) { result, err in
-            if let err = err {
-                print("Failed to login user:", err)
-                self.loginStatusMessage = "Failed to login user: \(err)"
-                return
-            }
-            
-            print("Successfully logged in as user: \(result?.user.uid ?? "")")
-            
-            self.loginStatusMessage = "Successfully logged in as user: \(result?.user.uid ?? "")"
-        }
-    }
+//    private func loginUser() {
+//        FirebaseManager.shared.auth.signIn(withEmail: player.email, password: password) { result, err in
+//            if let err = err {
+//                print("Failed to login user:", err)
+//                self.loginStatusMessage = "Failed to login user: \(err)"
+//                return
+//            }
+//
+//            print("Successfully logged in as user: \(result?.user.uid ?? "")")
+//
+//            self.loginStatusMessage = "Successfully logged in as user: \(result?.user.uid ?? "")"
+//
+//            #warning("Age not provided by API")
+//            //Add the player metadata to our viewmodel
+//            let player = Player(id: result?.user.uid ?? "", name: result?.user.displayName ?? "", email: result?.user.email ?? "", userName: result?.user.displayName ?? "", age: 0)
+//            eventVm.player = player
+//        }
+//    }
     
     @State var loginStatusMessage = ""
     
     
-    //tetsing area
+    //tetsinxg area
     
     func register(){
         Auth.auth().createUser(withEmail:email,password:password){
@@ -214,6 +228,20 @@ struct CreateUserPage: View {
             }
             else{
                 print ("😎 Registration success!")
+                
+#warning("Age not provided by API")
+                //Add the player metadata to our viewmodel
+                let player = Player(id: result?.user.uid ?? "", name: result?.user.displayName ?? "", email: result?.user.email ?? "", userName: result?.user.displayName ?? "", age: 0)
+                eventVm.player = player
+                
+//                Task{
+//                    let success = await eventVm.savePlayer(player: player)
+//                    if success {
+//
+//                    } else {
+//                        print("🤬 Error: Saving spot")
+//                    }
+//                }
                 /// load list view
                          presentSheet = true
 
@@ -233,7 +261,14 @@ struct CreateUserPage: View {
             }
             else{
                 print ("🪵 Login successful !")
-                presentSheet = true
+                
+#warning("Age not provided by API")
+                //Add the player metadata to our viewmodel
+                let player = Player(id: result?.user.uid ?? "", name: result?.user.displayName ?? "", email: result?.user.email ?? "", userName: result?.user.displayName ?? "", age: 0)
+                eventVm.player = player
+                
+                
+                 presentSheet = true
                 /// load list view
             }
         }
@@ -281,7 +316,7 @@ struct CreateUserPage: View {
                 }
                 
                 self.loginStatusMessage = "Successfully stored image with url: \(url?.absoluteString ?? "")"
-                print(url?.absoluteString)
+                print(url?.absoluteString ?? "")
             }
         }
     }
@@ -290,7 +325,8 @@ struct CreateUserPage: View {
 
 struct ContentView_Previews1: PreviewProvider {
     static var previews: some View {
-        CreateUserPage()
+        CreateUserPage(player:Player())
+            .environmentObject(EventViewModel())
     }
 }
 

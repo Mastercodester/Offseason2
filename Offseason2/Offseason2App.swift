@@ -35,7 +35,7 @@ struct Offseason2App: App {
 //            TestDataView()
 //            Home_Page(event:Event())
 //            AddEvent(event: Event())
-             CreateUserPage()
+            CreateUserPage(player: Player())
                 .environmentObject(eventViewModel)
             .environmentObject(locationManager)
             .environmentObject(mapVm)

@@ -14,7 +14,6 @@
 		0967AC472A166E2100800D73 /* EventPlaceViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0967AC462A166E2100800D73 /* EventPlaceViewModel.swift */; };
 		0967AC4F2A166F5100800D73 /* EventViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0967AC4B2A166F5100800D73 /* EventViewModel.swift */; };
 		0967AC532A16874100800D73 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0967AC522A16874100800D73 /* Event.swift */; };
-		0967AC572A168A9600800D73 /* CreateEventView .swift in Sources */ = {isa = PBXBuildFile; fileRef = 0967AC562A168A9600800D73 /* CreateEventView .swift */; };
 		0967AC592A168B2100800D73 /* AddEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0967AC582A168B2100800D73 /* AddEvent.swift */; };
 		0982E1D72A17E20300A30380 /* LocationMapPin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0982E1D62A17E20300A30380 /* LocationMapPin.swift */; };
 		098BF25C2A169BF500280650 /* PlaceLookupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 098BF25B2A169BF500280650 /* PlaceLookupView.swift */; };
@@ -78,7 +77,6 @@
 		0967AC462A166E2100800D73 /* EventPlaceViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventPlaceViewModel.swift; sourceTree = "<group>"; };
 		0967AC4B2A166F5100800D73 /* EventViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventViewModel.swift; sourceTree = "<group>"; };
 		0967AC522A16874100800D73 /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
-		0967AC562A168A9600800D73 /* CreateEventView .swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CreateEventView .swift"; sourceTree = "<group>"; };
 		0967AC582A168B2100800D73 /* AddEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddEvent.swift; sourceTree = "<group>"; };
 		0982E1D62A17E20300A30380 /* LocationMapPin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationMapPin.swift; sourceTree = "<group>"; };
 		098BF25B2A169BF500280650 /* PlaceLookupView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaceLookupView.swift; sourceTree = "<group>"; };
@@ -184,7 +182,6 @@
 				78FACE6E2A15691900E317AE /* Offseason2.entitlements */,
 				78FACE272A15622100E317AE /* Offseason2App.swift */,
 				78FACE292A15622100E317AE /* ContentView.swift */,
-				78FACE732A156FB100E317AE /* CreateUserPage.swift */,
 				78FACE6F2A156E6E00E317AE /* Views */,
 				0967AC3F2A1662C600800D73 /* ViewModels  */,
 				78FACE6B2A1568D600E317AE /* Models */,
@@ -235,6 +232,7 @@
 		78FACE6F2A156E6E00E317AE /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				78FACE732A156FB100E317AE /* CreateUserPage.swift */,
 				78FACE532A15659700E317AE /* HomePage.swift */,
 				78FACE5B2A15681E00E317AE /* GamePage.swift */,
 				098BF25B2A169BF500280650 /* PlaceLookupView.swift */,
@@ -245,7 +243,6 @@
 				78FACE592A1565D200E317AE /* ProfilePage.swift */,
 				0967AC582A168B2100800D73 /* AddEvent.swift */,
 				78FACE612A15685200E317AE /* HelpPage.swift */,
-				0967AC562A168A9600800D73 /* CreateEventView .swift */,
 				78FACE632A15686F00E317AE /* filterspage.swift */,
 				78FACE552A1565AA00E317AE /* ExplorePage.swift */,
 				78FACE692A1568C200E317AE /* CreateGameForm.swift */,
@@ -421,7 +418,6 @@
 				0967AC4F2A166F5100800D73 /* EventViewModel.swift in Sources */,
 				09648BA12A1AAA9600C8BB6F /* Player.swift in Sources */,
 				0967AC452A166DA300800D73 /* EventPlace.swift in Sources */,
-				0967AC572A168A9600800D73 /* CreateEventView .swift in Sources */,
 				78FACE622A15685200E317AE /* HelpPage.swift in Sources */,
 				78FACE5C2A15681E00E317AE /* GamePage.swift in Sources */,
 				78FACE582A1565BD00E317AE /* Mygames.swift in Sources */,

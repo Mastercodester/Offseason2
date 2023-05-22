@@ -20,11 +20,16 @@ struct AddEvent: View {
     @State private var showPlaceLookupSheet = false
     @State var isPickerShowing = false
     let mapSpan = MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1)
+    let regionSize = 500.0
 
     @EnvironmentObject private var eventVm: EventViewModel
     @State var event: Event
+
+    var previewRunning = false
     @Environment(\.dismiss) private var dismiss
-    @FirestoreQuery(collectionPath: "events") var events : [Event]
+    
+    
+    @FirestoreQuery(collectionPath: "players") var players : [Event]
 //    42.33157
 //    -83.045839
     @State private var mapRegion = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: 42.331578, longitude: -83.045839), span:MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1))
@@ -35,7 +40,6 @@ struct AddEvent: View {
 
     var body: some View {   
     NavigationStack{
-        
         ScrollView {
             ZStack {
                 VStack{
@@ -46,7 +50,8 @@ struct AddEvent: View {
                                 .bold()
                         .font(.title)) {
                         VStack{
-                                                        TextField("Event Name",text:$event.name)                             .autocorrectionDisabled()
+                            TextField("Username", text: $eventVm.player.userName)
+                            TextField("Event Name",text:$eventVm.player.email)                             .autocorrectionDisabled()
                                                             .textFieldStyle (.roundedBorder)
                                                                 .overlay {
                                                                 RoundedRectangle (cornerRadius: 5)
@@ -118,6 +123,22 @@ struct AddEvent: View {
                                         }
                     
                 }
+            }.onAppear{
+                if !previewRunning{
+                    $players.path = "players/\(eventVm.player.id ?? "")/events"
+                    print("players.path = \($players.path)")
+                }
+                
+            if event.id != nil {// if we have a location center it on the map
+                    mapRegion = MKCoordinateRegion(center: event.coordinate, span: mapSpan)
+                } else {
+                    Task{
+                        mapRegion = MKCoordinateRegion(center: locationVm.location?.coordinate  ?? CLLocationCoordinate2D(), latitudinalMeters: regionSize, longitudinalMeters: regionSize)
+                    }
+                }
+                annotations = [Annotation(name: event.name, address: event.address, coordinate: event.coordinate)]
+
+                
             }
         //
                     .toolbar{
@@ -146,7 +167,7 @@ struct AddEvent: View {
 
 struct AddEvent_Previews: PreviewProvider {
     static var previews: some View {
-        AddEvent(event: Event())
+        AddEvent(event: Event(), previewRunning: true)
         .environmentObject(EventViewModel())
         .environmentObject(LocationManager())
 
@@ -162,7 +183,7 @@ private extension AddEvent {
     var saveButton: some View{
         Button("Save"){
             Task{
-                let success = await eventVm.saveEvent(event: event)
+                let success = await eventVm.saveEvent(player: eventVm.player, event: event)
                 if success {
                     dismiss()
                 } else {

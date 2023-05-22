@@ -81,7 +81,7 @@ struct Home_Page: View {
 
             
         } .sheet(isPresented: self.$presentCreateSheet){
-           AddEvent(event: Event())
+            AddEvent(event: Event())
 
           }
         
