@@ -29,13 +29,15 @@ struct Offseason2App: App {
         FirebaseApp.configure()
     }
 
+
     var body: some Scene {
         WindowGroup {
 //            ContentView()
 //            TestDataView()
-//            Home_Page(event:Event())
+            Home_Page(event:Event(), player: Player())
 //            AddEvent(event: Event())
-            CreateUserPage(player: Player())
+//            CreateUserPage(player: Player())
+//            TestDataView(event: Event(), player: Player())
                 .environmentObject(eventViewModel)
             .environmentObject(locationManager)
             .environmentObject(mapVm)

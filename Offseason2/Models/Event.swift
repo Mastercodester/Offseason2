@@ -6,8 +6,13 @@
 //
 
 import Foundation
+import Firebase
+import FirebaseCore
 import FirebaseFirestoreSwift
+import SwiftUI
 import MapKit
+import PhotosUI
+import WeatherKit
 
 // this is the thats going to get added to firebase 
 struct Event: Identifiable,Codable,Equatable {
@@ -19,7 +24,7 @@ struct Event: Identifiable,Codable,Equatable {
     var category = ""
     var summary = ""
     var description = ""
-    var startDate = ""
+    var startDate = Date()
     var startTime = ""
     var endTime = ""
     var phoneNumber = ""
@@ -31,7 +36,7 @@ struct Event: Identifiable,Codable,Equatable {
     }
 
     var dictionary:[String:Any]{
-        return ["name": name,"hostName" : hostName,"locationName":locationName,"address":address,"latitude": latitude,"longitude":longitude,"category" :category,"description" : description,"startDate" : startDate,
+        return ["name": name,"hostName" : hostName,"locationName":locationName,"address":address,"latitude": latitude,"longitude":longitude,"category" :category,"description" : description,"startDate" : Timestamp(date: Date ()),
                 
                 "startTime" : startTime,"endTime" : endTime,"phoneNumber" : phoneNumber,"summary" : summary
         ]

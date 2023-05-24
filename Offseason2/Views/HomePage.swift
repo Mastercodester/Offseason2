@@ -13,6 +13,8 @@ import WeatherKit
 
 struct Home_Page: View {
     @State var event: Event
+    @State var player: Player
+
     @FirestoreQuery(collectionPath:"players") var events: [Event]
 
      
@@ -43,46 +45,55 @@ struct Home_Page: View {
             ZStack{
                 mapLayer
             } .ignoresSafeArea()
-            .toolbar{
-                ToolbarItemGroup(placement: .bottomBar) {
-                    VStack {
-                        HStack(spacing: 12){
-                            FilterButton
-                            Spacer()
-                            CreateButton
-                                .offset(x:20,y:-20)
-                        }.padding(.bottom,30)
+                .toolbar{
+                    ToolbarItemGroup(placement: .bottomBar) {
+                        VStack {
+                            HStack(spacing: 12){
+                                FilterButton
+                                Spacer()
+                                CreateButton
+                                    .offset(x:20,y:-20)
+                            }.padding(.bottom,30)
+                        }
+                    }
+                    ToolbarItemGroup(placement: .cancellationAction) {
+                        VStack{
+                            NotificationButton
+                            HelpButton
+                        }
+                        .padding(.top,60)
+                        
+                    }
+                    ToolbarItemGroup(placement: .primaryAction) {
+                        HStack(spacing: 2){
+                            ActivegamesButton
+                            WeatherButton
+                            
+                        }
                     }
                 }
-                ToolbarItemGroup(placement: .cancellationAction) {
-                    VStack{
-                        NotificationButton
-                        HelpButton
-                    }
-                    .padding(.top,60)
+                .task {
+                    // make map region shows user lo
+                    myRegion = MKCoordinateRegion(center: locationVm.location?.coordinate  ?? CLLocationCoordinate2D(), latitudinalMeters: regionSize, longitudinalMeters: regionSize)
+                }
+                .onAppear {
+                    
+                    eventVm.allEvents = events
+                    
+                    $events.path = "players/\(eventVm.player.id ?? "")/events"
+                    
+                    eventVm.allEvents = events
+                    //                mapVm.mapRegion = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: locationVm.location?.coordinate.longitude ?? 0.00, longitude: locationVm.location?.coordinate.latitude ?? 0.00), span:MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1))
+                }
             
-                }
-                ToolbarItemGroup(placement: .primaryAction) {
-                    HStack(spacing: 2){
-                        ActivegamesButton
-                        WeatherButton
-                         
-                    }
-                }
-            }
-            .task {
-                // make map region shows user lo
-                myRegion = MKCoordinateRegion(center: locationVm.location?.coordinate  ?? CLLocationCoordinate2D(), latitudinalMeters: regionSize, longitudinalMeters: regionSize)
-            }
-            .onAppear {
-$events.path = "players/\(eventVm.player.id ?? "")/events"
+        }
+        .sheet(item: $eventVm.selectedEvent){
+            event in
+            GameDetailsView(event: event, player: player)
+        }
 
-                eventVm.allEvents = events
-//                mapVm.mapRegion = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: locationVm.location?.coordinate.longitude ?? 0.00, longitude: locationVm.location?.coordinate.latitude ?? 0.00), span:MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1))
-            }
-
-            
-        } .sheet(isPresented: self.$presentCreateSheet){
+        
+        .sheet(isPresented: self.$presentCreateSheet){
             AddEvent(event: Event())
 
           }
@@ -109,7 +120,7 @@ $events.path = "players/\(eventVm.player.id ?? "")/events"
 
 struct Home_Page_Previews: PreviewProvider {
     static var previews: some View {
-        Home_Page(event:Event())
+        Home_Page(event:Event(), player: Player())
             .environmentObject(LocationManager())
             .environmentObject(MapViewModel())
             .environmentObject(EventViewModel())
@@ -156,6 +167,8 @@ private extension Home_Page{
                 LocationMapPin()
                     .scaleEffect(mapVm.eventLocation == event ? 1 : 0.7)
                      .onTapGesture{
+                         eventVm.selectedEvent = event
+
                         mapVm.showNextEvent(event)
                     }
                 

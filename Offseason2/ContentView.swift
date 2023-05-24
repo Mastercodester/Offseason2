@@ -19,7 +19,7 @@ struct ContentView: View {
         NavigationView{
              TabView{
                  Group{
-                     Home_Page(event: Event())
+                     Home_Page(event: Event(), player: Player())
                          .tabItem{
                              Label("Home",systemImage: "house.circle")
                             

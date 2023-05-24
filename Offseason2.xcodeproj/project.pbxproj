@@ -15,12 +15,15 @@
 		0967AC4F2A166F5100800D73 /* EventViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0967AC4B2A166F5100800D73 /* EventViewModel.swift */; };
 		0967AC532A16874100800D73 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0967AC522A16874100800D73 /* Event.swift */; };
 		0967AC592A168B2100800D73 /* AddEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0967AC582A168B2100800D73 /* AddEvent.swift */; };
+		097A2FEB2A1D43E700D6B1D9 /* SpotDetailPhotosScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 097A2FEA2A1D43E700D6B1D9 /* SpotDetailPhotosScrollView.swift */; };
+		097A2FED2A1D441E00D6B1D9 /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 097A2FEC2A1D441E00D6B1D9 /* Photo.swift */; };
+		097A2FEF2A1D445A00D6B1D9 /* PhotoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 097A2FEE2A1D445A00D6B1D9 /* PhotoView.swift */; };
 		0982E1D72A17E20300A30380 /* LocationMapPin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0982E1D62A17E20300A30380 /* LocationMapPin.swift */; };
 		098BF25C2A169BF500280650 /* PlaceLookupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 098BF25B2A169BF500280650 /* PlaceLookupView.swift */; };
 		098BF25E2A16E0A200280650 /* TestDataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 098BF25D2A16E0A200280650 /* TestDataView.swift */; };
 		0992A3112A1BEBAF00FB9575 /* ExploreCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0992A3102A1BEBAF00FB9575 /* ExploreCard.swift */; };
 		09B66A052A17D2B300F1C18F /* MapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B66A042A17D2B300F1C18F /* MapViewModel.swift */; };
-		6C3A522B2A1BF25800EA6F8D /* LaFitness.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C3A522A2A1BF25800EA6F8D /* LaFitness.swift */; };
+		6C3A522B2A1BF25800EA6F8D /*  GameDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C3A522A2A1BF25800EA6F8D /*  GameDetailsView.swift */; };
 		78FACE282A15622100E317AE /* Offseason2App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78FACE272A15622100E317AE /* Offseason2App.swift */; };
 		78FACE2A2A15622100E317AE /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78FACE292A15622100E317AE /* ContentView.swift */; };
 		78FACE2C2A15622100E317AE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 78FACE2B2A15622100E317AE /* Assets.xcassets */; };
@@ -80,12 +83,15 @@
 		0967AC4B2A166F5100800D73 /* EventViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventViewModel.swift; sourceTree = "<group>"; };
 		0967AC522A16874100800D73 /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		0967AC582A168B2100800D73 /* AddEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddEvent.swift; sourceTree = "<group>"; };
+		097A2FEA2A1D43E700D6B1D9 /* SpotDetailPhotosScrollView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpotDetailPhotosScrollView.swift; sourceTree = "<group>"; };
+		097A2FEC2A1D441E00D6B1D9 /* Photo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
+		097A2FEE2A1D445A00D6B1D9 /* PhotoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoView.swift; sourceTree = "<group>"; };
 		0982E1D62A17E20300A30380 /* LocationMapPin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationMapPin.swift; sourceTree = "<group>"; };
 		098BF25B2A169BF500280650 /* PlaceLookupView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaceLookupView.swift; sourceTree = "<group>"; };
 		098BF25D2A16E0A200280650 /* TestDataView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestDataView.swift; sourceTree = "<group>"; };
 		0992A3102A1BEBAF00FB9575 /* ExploreCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExploreCard.swift; sourceTree = "<group>"; };
 		09B66A042A17D2B300F1C18F /* MapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewModel.swift; sourceTree = "<group>"; };
-		6C3A522A2A1BF25800EA6F8D /* LaFitness.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LaFitness.swift; sourceTree = "<group>"; };
+		6C3A522A2A1BF25800EA6F8D /*  GameDetailsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = " GameDetailsView.swift"; sourceTree = "<group>"; };
 		78FACE242A15622100E317AE /* Offseason2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Offseason2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		78FACE272A15622100E317AE /* Offseason2App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Offseason2App.swift; sourceTree = "<group>"; };
 		78FACE292A15622100E317AE /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -163,6 +169,9 @@
 			isa = PBXGroup;
 			children = (
 				098BF25D2A16E0A200280650 /* TestDataView.swift */,
+				097A2FEC2A1D441E00D6B1D9 /* Photo.swift */,
+				097A2FEE2A1D445A00D6B1D9 /* PhotoView.swift */,
+				097A2FEA2A1D43E700D6B1D9 /* SpotDetailPhotosScrollView.swift */,
 				78FACE262A15622100E317AE /* Offseason2 */,
 				78FACE372A15622200E317AE /* Offseason2Tests */,
 				78FACE412A15622200E317AE /* Offseason2UITests */,
@@ -236,7 +245,7 @@
 		78FACE6F2A156E6E00E317AE /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				6C3A522A2A1BF25800EA6F8D /* LaFitness.swift */,
+				6C3A522A2A1BF25800EA6F8D /*  GameDetailsView.swift */,
 				0992A3102A1BEBAF00FB9575 /* ExploreCard.swift */,
 				78FACE732A156FB100E317AE /* CreateUserPage.swift */,
 				78FACE532A15659700E317AE /* HomePage.swift */,
@@ -418,7 +427,7 @@
 				78FACE5A2A1565D200E317AE /* ProfilePage.swift in Sources */,
 				78FACE5E2A15683000E317AE /* WeatherPage.swift in Sources */,
 				098BF25E2A16E0A200280650 /* TestDataView.swift in Sources */,
-				6C3A522B2A1BF25800EA6F8D /* LaFitness.swift in Sources */,
+				6C3A522B2A1BF25800EA6F8D /*  GameDetailsView.swift in Sources */,
 				78FACE562A1565AA00E317AE /* ExplorePage.swift in Sources */,
 				78FACE602A15684300E317AE /* NotificationPage.swift in Sources */,
 				78FACE2A2A15622100E317AE /* ContentView.swift in Sources */,
@@ -427,6 +436,7 @@
 				09648BA12A1AAA9600C8BB6F /* Player.swift in Sources */,
 				0967AC452A166DA300800D73 /* EventPlace.swift in Sources */,
 				78FACE622A15685200E317AE /* HelpPage.swift in Sources */,
+				097A2FED2A1D441E00D6B1D9 /* Photo.swift in Sources */,
 				78FACE5C2A15681E00E317AE /* GamePage.swift in Sources */,
 				78FACE582A1565BD00E317AE /* Mygames.swift in Sources */,
 				78FACE6D2A1568F300E317AE /* WeatherViewModel.swift in Sources */,
@@ -434,8 +444,10 @@
 				78FACE282A15622100E317AE /* Offseason2App.swift in Sources */,
 				0967AC472A166E2100800D73 /* EventPlaceViewModel.swift in Sources */,
 				78FACE642A15686F00E317AE /* filterspage.swift in Sources */,
+				097A2FEB2A1D43E700D6B1D9 /* SpotDetailPhotosScrollView.swift in Sources */,
 				78FACE6A2A1568C200E317AE /* CreateGameForm.swift in Sources */,
 				0967AC532A16874100800D73 /* Event.swift in Sources */,
+				097A2FEF2A1D445A00D6B1D9 /* PhotoView.swift in Sources */,
 				0967AC432A166AEA00800D73 /* Annotation.swift in Sources */,
 				098BF25C2A169BF500280650 /* PlaceLookupView.swift in Sources */,
 				78FACE742A156FB100E317AE /* CreateUserPage.swift in Sources */,
