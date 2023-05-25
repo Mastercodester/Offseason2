@@ -28,6 +28,24 @@ class EventViewModel: ObservableObject {
     var joinedPlayers:[Event] = []
 
     
+    func joinEvent(player:Player, event:Event) -> Bool {
+        guard let playerID = player.id else {
+            return false
+        }
+        guard let eventID = event.id else {
+            return false
+        }
+        
+        //ths is a changeble var
+        var joinedPlayers = event
+        joinedPlayers.participants.append(playerID)
+        return true
+         
+        
+    }
+    
+    
+     
     func addEvent(event: Event) {
         allEvents.append(event)
         //

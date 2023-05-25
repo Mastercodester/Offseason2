@@ -148,7 +148,12 @@ struct GameDetailsView: View {
                     VStack {
                     
                     Spacer()
-                    Button{}
+                    Button{
+                        let success = eventVm.joinEvent(player: player, event: event)
+                        if success{
+                            success
+                        }
+                    }
                 label:{
                     Text("Join Game")
                         .bold()

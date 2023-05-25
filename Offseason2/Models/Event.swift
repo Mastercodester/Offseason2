@@ -30,6 +30,7 @@ struct Event: Identifiable,Codable,Equatable {
     var phoneNumber = ""
     var latitude = 0.0
     var longitude = 0.0
+    var participants: [String] = []
     // this refer to here whenever we need a coordinate to refer to  
     var coordinate: CLLocationCoordinate2D{
         CLLocationCoordinate2D(latitude: latitude, longitude: longitude)

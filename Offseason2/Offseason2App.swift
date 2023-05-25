@@ -33,10 +33,10 @@ struct Offseason2App: App {
     var body: some Scene {
         WindowGroup {
 //            ContentView()
-//            TestDataView()
-            Home_Page(event:Event(), player: Player())
+//            TestDataView(event: Event(), player: Player())
+//            Home_Page(event:Event(), player: Player())
 //            AddEvent(event: Event())
-//            CreateUserPage(player: Player())
+            CreateUserPage(player: Player())
 //            TestDataView(event: Event(), player: Player())
                 .environmentObject(eventViewModel)
             .environmentObject(locationManager)
